@@ -27,7 +27,7 @@ namespace Zhuang.Data.Test
         [TestMethod]
         public void Select()
         {
-            var products = _dba.Select<SysProduct>(new { ProductId = 55 });
+            var products = _dba.Select<SysProduct>(new { ProductId = 1 });
             Console.WriteLine(products.ProductName);
         }
 
@@ -39,7 +39,7 @@ namespace Zhuang.Data.Test
             pro.ProductName = "zwb";
             pro.RecordStatus = "Active";
 
-            //_dba.Insert(pro);
+            _dba.Insert(pro);
 
             var dt = _dba.QueryDataTable("select * from sys_product where ProductName=@ProductName",
                 new { ProductName ="zwb"});

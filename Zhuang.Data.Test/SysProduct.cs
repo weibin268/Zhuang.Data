@@ -13,7 +13,6 @@ namespace Zhuang.Data.Test
         [Key]
         [AutoGenerate]
         public int ProductId { get; set; }
-        public string ModuleType { get; set; }
         public string ProductCode { get; set; }
         public string ProductName { get; set; }
         public string BarCode { get; set; }
@@ -21,8 +20,12 @@ namespace Zhuang.Data.Test
         public string Unit { get; set; }
         public string ImageUrl { get; set; }
         public string Description { get; set; }
+
         public string RecordStatus { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
-        public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public string CreatedById { get; set; }
+        public string ModifiedById { get; set; }
+        public DateTime? CreationDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+
     }
 }

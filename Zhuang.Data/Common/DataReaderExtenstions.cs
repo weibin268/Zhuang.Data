@@ -67,7 +67,9 @@ namespace Zhuang.Data.Common
                     //PropertyInfo pi = entityType.GetProperty(reader.GetName(i));
                     if (pi != null)
                     {
-                        var value = reader.GetValue(i);
+                        var objValue = reader.GetValue(i);
+                        var value = objValue.GetType() == typeof(DBNull) ? null : objValue;
+
                         object valueChanged;
                         if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         {
