@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC032695-B057-4230-8582-3C9390F630C2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Zhuang.Data</RootNamespace>
+    <AssemblyName>Zhuang.Data</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=2.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Annotations\AutoGenerateAttribute.cs" />
+    <Compile Include="Annotations\ColumnAttribute.cs" />
+    <Compile Include="Annotations\IgnoreAttribute.cs" />
+    <Compile Include="Annotations\KeyAttribute.cs" />
+    <Compile Include="Annotations\TableAttribute.cs" />
+    <Compile Include="BulkCopy\BulkCopyExtenstions.cs" />
+    <Compile Include="BulkCopy\DbBulkCopy.cs" />
+    <Compile Include="BulkCopy\DbBulkCopyFactory.cs" />
+    <Compile Include="Common\AppSettingsKey.cs" />
+    <Compile Include="DbProviders\SqlServer\SqlServerBulkCopy.cs" />
+    <Compile Include="Common\Delegates.cs" />
+    <Compile Include="Common\RegexPattern.cs" />
+    <Compile Include="Common\Replacement.cs" />
+    <Compile Include="DbAccessorContext.cs" />
+    <Compile Include="DbAccessor.cs" />
+    <Compile Include="DbAccessorFactory.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Entity\EntityExtenstions.cs" />
+    <Compile Include="Entity\Mapping\ColumnMapping.cs" />
+    <Compile Include="Entity\Mapping\TableMapping.cs" />
+    <Compile Include="Entity\Sql\DefaultSqlBuilder.cs" />
+    <Compile Include="Entity\Sql\ISqlBuilder.cs" />
+    <Compile Include="EnvironmentVariable\EvnValRepository.cs" />
+    <Compile Include="EnvironmentVariable\IEvnValStoreProvider.cs" />
+    <Compile Include="EnvironmentVariable\SystemProvider.cs" />
+    <Compile Include="Handlers\DbParameterHandler.cs" />
+    <Compile Include="Handlers\HandlerFactory.cs" />
+    <Compile Include="Handlers\IDbExecuteHandler.cs" />
+    <Compile Include="DbProviders\Oracle\OracleAccessor.cs" />
+    <Compile Include="Pagination\DbPagingFactory.cs" />
+    <Compile Include="Pagination\PagingExtenstions.cs" />
+    <Compile Include="DbProviders\MySql\MySqlPaging.cs" />
+    <Compile Include="Pagination\DbPaging.cs" />
+    <Compile Include="DbProviders\Oracle\OraclePaging.cs" />
+    <Compile Include="SqlCommands\Parser\DynamicClauseParser.cs" />
+    <Compile Include="SqlCommands\Parser\ISqlCommandParser.cs" />
+    <Compile Include="SqlCommands\Parser\ParameterNameParser.cs" />
+    <Compile Include="SqlCommands\Parser\ReplacementParser.cs" />
+    <Compile Include="SqlCommands\SqlCommand.cs" />
+    <Compile Include="Handlers\SqlCommandHandler.cs" />
+    <Compile Include="SqlCommands\Store\AssemblyResourceProvider.cs" />
+    <Compile Include="SqlCommands\Store\SqlCommandResourceAttribute.cs" />
+    <Compile Include="SqlCommands\Store\ConfigFilesProvider.cs" />
+    <Compile Include="SqlCommands\Store\ISqlCommandStoreProvider.cs" />
+    <Compile Include="SqlCommands\Store\SqlCommandRepository.cs" />
+    <Compile Include="DbProviders\SqlServer\SqlServerPaging.cs" />
+    <Compile Include="DbProviders\SqlServer\SqlServerAccessor.cs" />
+    <Compile Include="DbProviders\MySql\MySqlAccessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\DataReaderExtenstions.cs" />
+    <Compile Include="Utility\DataTableUtil.cs" />
+    <Compile Include="Common\Extenstions.cs" />
+    <Compile Include="Utility\SqlUtil.cs" />
+    <Compile Include="Handlers\TraceHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ClassDiagram\DbAccessor.cd" />
+    <None Include="ClassDiagram\Paging.cd" />
+    <EmbeddedResource Include="SqlCommands\Store\ConfigFileDemo.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MyLib\MySql.Data.dll" />
+    <Content Include="MyLib\Oracle.DataAccess.dll" />
+    <Content Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zhuang.Data.DbAccessor" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>0AAUEAAAACAAACQAQAAkAGAAAAAEAAABAAAQAAAEACA=</HashCode>
+      <FileName>DbAccessor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DbClientFactory" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Zhuang.Data.DbClientFactory" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAEAAAAAAAAACAAAAAAAAAAAIACAAAAAAAAA=</HashCode>
+      <FileName>DbClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.MySql.MySqlDbClientFactory" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAEAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySql\MySqlDbClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.Oracle.OracleDbClientFactory" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAEAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Oracle\OracleDbClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.SqlServer.SqlServerDbClientFactory" Collapsed="true">
+    <Position X="3" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAEAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlServer\SqlServerDbClientFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.DbAccessorFactory" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DbAccessorFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.SqlServer.SqlServerAccessor" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SqlServer\SqlServerAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.Oracle.OracleAccessor" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Oracle\OracleAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zhuang.Data.MySql.MySqlAccessor" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MySql\MySqlAccessor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
