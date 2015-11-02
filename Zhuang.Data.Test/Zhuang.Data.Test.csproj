@@ -62,6 +62,7 @@
     <Compile Include="MappingTest.cs" />
     <Compile Include="EntityTest.cs" />
     <Compile Include="SysProduct.cs" />
+    <Compile Include="SqlCommandsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zhuang.Data\Zhuang.Data.csproj">
@@ -71,6 +72,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="App_Config\SqlCommands\Test.sqlserver.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_Config\SqlCommands\Test.oracle.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_Config\SqlCommands\Test.mysql.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Sys_Product.sql" />

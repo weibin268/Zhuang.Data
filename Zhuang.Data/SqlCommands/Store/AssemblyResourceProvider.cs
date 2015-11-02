@@ -63,7 +63,8 @@ namespace Zhuang.Data.SqlCommands.Store
 
             var resourceNames = Array.FindAll<string>(assembly.GetManifestResourceNames(), c =>
             {
-                return c.EndsWith(ConfigFilesProvider.CONFIG_FILE_EXTENSION);
+                //return c.EndsWith(ConfigFilesProvider.CONFIG_FILE_EXTENSION);
+                return ConfigFilesProvider.IsValidConfigFileName(c);
             });
 
             foreach (string resourceName in resourceNames)

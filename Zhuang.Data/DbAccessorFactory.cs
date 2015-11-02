@@ -8,6 +8,7 @@ using Zhuang.Data.Common;
 using Zhuang.Data.DbProviders.MySql;
 using Zhuang.Data.DbProviders.Oracle;
 using Zhuang.Data.DbProviders.SqlServer;
+using Zhuang.Data.EnvironmentVariable;
 using Zhuang.Data.Handlers;
 
 namespace Zhuang.Data
@@ -97,14 +98,17 @@ namespace Zhuang.Data
                 || providerName.ToLower() == DbProviderName.SqlServer.ToString().ToLower())
             {
                 dba = new SqlServerAccessor(connectionString);
+                EvnValRepository.Instance.AddEvnVal(typeof(DbProviderName).FullName, DbProviderName.SqlServer.ToString());
             }
             else if (providerName.ToLower() == DbProviderName.Oracle.ToString().ToLower())
             {
                 dba = new OracleAccessor(connectionString);
+                EvnValRepository.Instance.AddEvnVal(typeof(DbProviderName).FullName, DbProviderName.Oracle.ToString());
             }
             else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower())
             {
                 dba = new MySqlAccessor(connectionString);
+                EvnValRepository.Instance.AddEvnVal(typeof(DbProviderName).FullName, DbProviderName.MySql.ToString());
             }
             else
             {
