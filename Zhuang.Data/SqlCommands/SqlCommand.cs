@@ -14,8 +14,6 @@ namespace Zhuang.Data.SqlCommands
 
         public List<DbParameter> Parameters { get; set; }
 
-        public DbProviderName DbProviderName { get; set; }
-
         public SqlCommand()
         {
             Parameters = new List<DbParameter>();

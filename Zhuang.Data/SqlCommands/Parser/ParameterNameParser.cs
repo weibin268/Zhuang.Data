@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Zhuang.Data.Common;
+using Zhuang.Data.EnvironmentVariable;
 using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.SqlCommands.Parser
@@ -15,7 +16,8 @@ namespace Zhuang.Data.SqlCommands.Parser
         {
             string parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_AT;
 
-            if (rawSqlCommand.DbProviderName == DbProviderName.Oracle)
+            string strDbProviderName = EvnValRepository.Instance.GetEvnVal(typeof(DbProviderName).FullName).ToString();
+            if (strDbProviderName == DbProviderName.Oracle.ToString())
             {
                 parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_COLON;
             }

@@ -58,10 +58,6 @@ namespace Zhuang.Data.Handlers
         private void ParseParameterName(DbAccessorContext context)
         {
             SqlCommand cmd = new SqlCommand();
-            if (context.DbCommand.GetType().Name.Contains(DbProviderName.Oracle.ToString()))
-            {
-                cmd.DbProviderName = DbProviderName.Oracle;
-            }
 
             cmd.Text = context.DbCommand.CommandText;
             new ParameterNameParser().Parse(cmd);
@@ -72,10 +68,6 @@ namespace Zhuang.Data.Handlers
         private void ParseReplacement(DbAccessorContext context)
         {
             SqlCommand cmd = new SqlCommand();
-            if (context.DbCommand.GetType().Name.Contains(DbProviderName.Oracle.ToString()))
-            {
-                cmd.DbProviderName = DbProviderName.Oracle;
-            }
 
             foreach (DbParameter p in context.DbCommand.Parameters)
             {
