@@ -180,14 +180,17 @@ namespace Zhuang.Data.SqlCommands.Store
 
                 if (lsDbProviderNames.Exists(c => c.ToLower() == configDbProviderName.ToLower()))
                 {
-                    string strDbProviderName = EvnValRepository.Instance.GetEvnVal(typeof(DbProviderName).FullName).ToString();
-
-                    if (configDbProviderName.ToLower() != strDbProviderName.ToLower())
+                    object objDbAccessorHashCode = EvnValRepository.Instance.GetEvnVal("DbAccessorHashCode");
+                    if (objDbAccessorHashCode != null)
                     {
-                        result = false;
+                        string strDbProviderName = EvnValRepository.Instance.GetEvnVal(objDbAccessorHashCode.ToString()).ToString();
+                        if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
+                        {
+                            result = false;
+                        }
                     }
                 }
-            } 
+            }
             #endregion
 
             return result;

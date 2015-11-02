@@ -126,7 +126,7 @@ namespace Zhuang.Data
                     cmd.Parameters.AddRange(dbParameters);
                 }
 
-                DbAccessorContext context = new DbAccessorContext(cmd);
+                DbAccessorContext context = new DbAccessorContext(this, cmd);
 
                 if (PreCommandExecute != null)
                 {

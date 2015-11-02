@@ -14,6 +14,8 @@ namespace Zhuang.Data.SqlCommands
 
         public List<DbParameter> Parameters { get; set; }
 
+        public DbAccessor DbAccessor { get; set; }
+
         public SqlCommand()
         {
             Parameters = new List<DbParameter>();

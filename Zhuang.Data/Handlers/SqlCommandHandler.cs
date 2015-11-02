@@ -44,8 +44,9 @@ namespace Zhuang.Data.Handlers
             if (!DynamicClauseParser.IsCanParse(context.DbCommand.CommandText)) return;
 
             SqlCommand cmd = new SqlCommand();
-            cmd.Text = context.DbCommand.CommandText;
 
+            cmd.DbAccessor = context.DbAccessor;
+            cmd.Text = context.DbCommand.CommandText;
             foreach (DbParameter p in context.DbCommand.Parameters)
             {
                 cmd.Parameters.Add(p);
@@ -59,6 +60,7 @@ namespace Zhuang.Data.Handlers
         {
             SqlCommand cmd = new SqlCommand();
 
+            cmd.DbAccessor = context.DbAccessor;
             cmd.Text = context.DbCommand.CommandText;
             new ParameterNameParser().Parse(cmd);
 
@@ -69,6 +71,7 @@ namespace Zhuang.Data.Handlers
         {
             SqlCommand cmd = new SqlCommand();
 
+            cmd.DbAccessor = context.DbAccessor;
             foreach (DbParameter p in context.DbCommand.Parameters)
             {
                 cmd.Parameters.Add(p);
