@@ -79,11 +79,11 @@ namespace Zhuang.Data.Utility
             return sql;
         }
 
-        public static string GetSqlFromDbCommand(DbCommand sc)
+        public static string GetSqlFromDbCommand(DbCommand dbCommand)
         {
-            string strSql = sc.CommandText;
+            string strSql = dbCommand.CommandText;
 
-            foreach (DbParameter dp in sc.Parameters)
+            foreach (DbParameter dp in dbCommand.Parameters)
             {
                 string strReplace = string.Empty;
 
