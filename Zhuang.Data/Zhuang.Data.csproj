@@ -76,6 +76,7 @@
     <Compile Include="Entity\Sql\DefaultSqlBuilder.cs" />
     <Compile Include="Entity\Sql\ISqlBuilder.cs" />
     <Compile Include="EnvironmentVariable\EvnValRepository.cs" />
+    <Compile Include="Common\EvnValService.cs" />
     <Compile Include="EnvironmentVariable\IEvnValStoreProvider.cs" />
     <Compile Include="EnvironmentVariable\SystemProvider.cs" />
     <Compile Include="Handlers\DbParameterHandler.cs" />

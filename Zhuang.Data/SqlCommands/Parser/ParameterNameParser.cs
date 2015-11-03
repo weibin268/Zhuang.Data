@@ -16,7 +16,7 @@ namespace Zhuang.Data.SqlCommands.Parser
         {
             string parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_AT;
 
-            string strDbProviderName = EvnValRepository.Instance.GetEvnVal(rawSqlCommand.DbAccessor.GetHashCode().ToString()).ToString();
+            string strDbProviderName = EvnValService.GetDbAccessorDbProviderName(rawSqlCommand.DbAccessor);
             if (strDbProviderName == DbProviderName.Oracle.ToString())
             {
                 parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_COLON;

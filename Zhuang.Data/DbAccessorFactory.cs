@@ -47,7 +47,7 @@ namespace Zhuang.Data
                     {
                         _dba = CreateDbAccessor();
                         _dba.IsSingleton = true;
-                        EvnValRepository.Instance.AddEvnVal("DbAccessorHashCode", _dba.GetHashCode().ToString());
+                        EvnValService.SetDefaultDbAccessorHashCode(_dba);
                     }
                 }
             }
@@ -99,17 +99,17 @@ namespace Zhuang.Data
                 || providerName.ToLower() == DbProviderName.SqlServer.ToString().ToLower())
             {
                 dba = new SqlServerAccessor(connectionString);
-                EvnValRepository.Instance.AddEvnVal(dba.GetHashCode().ToString(), DbProviderName.SqlServer.ToString());
+                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.SqlServer);
             }
             else if (providerName.ToLower() == DbProviderName.Oracle.ToString().ToLower())
             {
                 dba = new OracleAccessor(connectionString);
-                EvnValRepository.Instance.AddEvnVal(dba.GetHashCode().ToString(), DbProviderName.Oracle.ToString());
+                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.Oracle);
             }
             else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower())
             {
                 dba = new MySqlAccessor(connectionString);
-                EvnValRepository.Instance.AddEvnVal(dba.GetHashCode().ToString(), DbProviderName.MySql.ToString());
+                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.MySql);
             }
             else
             {

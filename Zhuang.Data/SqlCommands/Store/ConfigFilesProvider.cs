@@ -180,10 +180,10 @@ namespace Zhuang.Data.SqlCommands.Store
 
                 if (lsDbProviderNames.Exists(c => c.ToLower() == configDbProviderName.ToLower()))
                 {
-                    object objDbAccessorHashCode = EvnValRepository.Instance.GetEvnVal("DbAccessorHashCode");
-                    if (objDbAccessorHashCode != null)
+                    string strDbAccessorHashCode = EvnValService.GetDefaultDbAccessorHashCode();
+                    if (strDbAccessorHashCode != null)
                     {
-                        string strDbProviderName = EvnValRepository.Instance.GetEvnVal(objDbAccessorHashCode.ToString()).ToString();
+                        string strDbProviderName = EvnValRepository.Instance.GetEvnVal(strDbAccessorHashCode).ToString();
                         if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
                         {
                             result = false;
