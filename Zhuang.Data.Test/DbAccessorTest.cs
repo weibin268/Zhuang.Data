@@ -26,7 +26,7 @@ namespace Zhuang.Data.Test
         [TestMethod]
         public void QueryDataTable()
         {
-        
+
             var dt = _dba.QueryDataTable("select top 10 * from sys_product");
             Console.WriteLine(DataTableUtil.ToString(dt));
         }
@@ -69,5 +69,17 @@ namespace Zhuang.Data.Test
             Console.WriteLine(DataTableUtil.ToString(dt4));
 
         }
+
+        [TestMethod]
+        public void BeginTran()
+        {
+            using (DbAccessor dba = DbAccessor.Create())
+            {
+                dba.BeginTran();
+                dba.ExecuteNonQuery("update sys_product set ProductName='zwb' where ProductId=#ProductId#", new { ProductId = 1 });
+                dba.RollbackTran();
+            }
+        }
+
     }
 }
