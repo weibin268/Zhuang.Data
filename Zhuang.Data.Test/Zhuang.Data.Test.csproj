@@ -63,6 +63,7 @@
     <Compile Include="EntityTest.cs" />
     <Compile Include="SysProduct.cs" />
     <Compile Include="SqlCommandsTest.cs" />
+    <Compile Include="DbAccessorFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zhuang.Data\Zhuang.Data.csproj">
