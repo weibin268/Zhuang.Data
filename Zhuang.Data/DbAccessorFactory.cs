@@ -56,7 +56,7 @@ namespace Zhuang.Data
         public static DbAccessor CreateDbAccessor()
         {
             var result = CreateDbAccessor(DefaultDbName);
-            EvnValService.SetDefaultDbAccessorHashCode(_dba);
+            EvnValService.SetDefaultDbAccessorHashCode(result);
             return result;
         }
 
