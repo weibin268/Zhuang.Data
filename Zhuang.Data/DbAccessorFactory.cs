@@ -47,7 +47,6 @@ namespace Zhuang.Data
                     {
                         _dba = CreateDbAccessor();
                         _dba.IsSingleton = true;
-                        EvnValService.SetDefaultDbAccessorHashCode(_dba);
                     }
                 }
             }
@@ -56,7 +55,9 @@ namespace Zhuang.Data
 
         public static DbAccessor CreateDbAccessor()
         {
-            return CreateDbAccessor(DefaultDbName);
+            var result = CreateDbAccessor(DefaultDbName);
+            EvnValService.SetDefaultDbAccessorHashCode(_dba);
+            return result;
         }
 
         public static DbAccessor CreateDbAccessor(string name)
