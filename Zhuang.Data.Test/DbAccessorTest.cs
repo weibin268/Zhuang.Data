@@ -76,7 +76,7 @@ namespace Zhuang.Data.Test
             using (DbAccessor dba = DbAccessor.Create())
             {
                 dba.BeginTran();
-                dba.ExecuteNonQuery("update sys_product set ProductName='zwb' where ProductId=#ProductId#", new { ProductId = 1 });
+                dba.ExecuteNonQuery("update sys_product set ProductName='abc' where ProductId=#ProductId#", new { ProductId = 1 });
                 dba.RollbackTran();
             }
         }
