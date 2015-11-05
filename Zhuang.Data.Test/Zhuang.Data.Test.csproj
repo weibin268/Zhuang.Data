@@ -83,6 +83,9 @@
     <EmbeddedResource Include="App_Config\SqlCommands\Test.mysql.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="App_Config\SqlCommands\Test\Test.sqlserver.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Sys_Product.sql" />

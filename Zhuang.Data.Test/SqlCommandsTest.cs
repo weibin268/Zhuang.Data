@@ -16,6 +16,11 @@ namespace Zhuang.Data.Test
 
             Console.WriteLine(DataTableUtil.ToString(dt));
 
+            dt = _dba.QueryDataTable("SysProduct.top8");
+
+            Console.WriteLine(DataTableUtil.ToString(dt));
+
+
         }
     }
 }
