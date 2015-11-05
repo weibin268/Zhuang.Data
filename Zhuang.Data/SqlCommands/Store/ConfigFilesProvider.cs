@@ -25,22 +25,23 @@ namespace Zhuang.Data.SqlCommands.Store
             {
                 if (string.IsNullOrEmpty(_basePath))
                 {
-                    string configPath = ConfigurationManager.AppSettings[AppSettingsKey.SqlCommandsBasePath];
-                    string tempbasePath = configPath == null ? @".\App_Config\SqlCommands" : configPath;
+                    string defaultBasePath = @".\App_Config\SqlCommands";
+                    string configBasePath = ConfigurationManager.AppSettings[AppSettingsKey.SqlCommandsBasePath];
+                    string tempBasePath = configBasePath == null ? defaultBasePath : configBasePath;
 
                     #region 如是Web环境则取Web项目的目录
                     if (HttpContext.Current != null)
                     {
-                        tempbasePath = tempbasePath.Replace(@".\", @"~\");
+                        tempBasePath = tempBasePath.Replace(@".\", @"~\");
 
-                        if (tempbasePath.StartsWith(@"~\"))
+                        if (tempBasePath.StartsWith(@"~\"))
                         {
-                            tempbasePath = HttpContext.Current.Server.MapPath(tempbasePath);
+                            tempBasePath = HttpContext.Current.Server.MapPath(tempBasePath);
                         }
                     }
-
-                    _basePath = tempbasePath;
                     #endregion
+
+                    _basePath = tempBasePath;
                 }
                 return _basePath;
             }
