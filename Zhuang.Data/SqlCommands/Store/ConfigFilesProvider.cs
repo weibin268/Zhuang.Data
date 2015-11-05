@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Web;
 using System.Xml;
 using Zhuang.Data.Common;
 using Zhuang.Data.EnvironmentVariable;
@@ -20,8 +21,23 @@ namespace Zhuang.Data.SqlCommands.Store
         {
             get
             {
+                string result = string.Empty;
                 string basePath = ConfigurationManager.AppSettings[AppSettingsKey.SqlCommandsBasePath];
-                return basePath == null ? @".\App_Config\SqlCommands" : basePath;
+                result= basePath == null ? @".\App_Config\SqlCommands" : basePath;
+
+                #region 如是Web环境则取Web项目的目录
+                if (HttpContext.Current != null)
+                {
+                    result = result.Replace(@".\", @"~\");
+
+                    if (result.StartsWith(@"~\"))
+                    {
+                        result = HttpContext.Current.Server.MapPath(result);
+                    }
+                } 
+                #endregion
+
+                return result;
             }
         }
 
