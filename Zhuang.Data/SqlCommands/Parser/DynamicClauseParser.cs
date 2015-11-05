@@ -15,8 +15,8 @@ namespace Zhuang.Data.SqlCommands.Parser
 
     public class DynamicClauseParser : ISqlCommandParser
     {
-        internal const string LEFT_BRACE_DUBLE_QUESTION_MARK = "{??";//视值为null或DBNull参数为“有效”参数
-        internal const string LEFT_BRACE_QUESTION_MARK = "{?";//视值为null或DBNull参数“无效”参数
+        internal const string LEFT_BRACE_DUBLE_QUESTION_MARK = "{??";//视值为“null”或“DBNull”的参数为“有效”参数
+        internal const string LEFT_BRACE_QUESTION_MARK = "{?";//视值为“null”或“DBNull”的参数为“无效”参数
         internal const string RIGHT_BRACE = "}";
 
         private Stack removeClauseStack = new Stack();
