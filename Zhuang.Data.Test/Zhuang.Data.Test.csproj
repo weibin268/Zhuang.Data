@@ -61,7 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MappingTest.cs" />
     <Compile Include="EntityTest.cs" />
-    <Compile Include="SysProduct.cs" />
+    <Compile Include="Models\SysProduct.cs" />
     <Compile Include="SqlCommandsTest.cs" />
     <Compile Include="DbAccessorFactoryTest.cs" />
     <Compile Include="BulkCopyTest.cs" />
@@ -85,7 +85,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sys_Product.sql" />
+    <Content Include="Models\Sys_Product.sql" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

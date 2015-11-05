@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Zhuang.Data.Annotations;
 using Zhuang.Data.Handlers;
 using Zhuang.Data.Utility;
+using Zhuang.Data.Test.Models;
 
 namespace Zhuang.Data.Test
 {

@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Zhuang.Data.Annotations;
 using Zhuang.Data.Entity.Mapping;
 using Zhuang.Data.Entity.Sql;
+using Zhuang.Data.Test.Models;
 
 namespace Zhuang.Data.Test
 {

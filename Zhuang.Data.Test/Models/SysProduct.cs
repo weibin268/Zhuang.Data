@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zhuang.Data.Annotations;
 
-namespace Zhuang.Data.Test
+namespace Zhuang.Data.Test.Models
 {
     [Table("Sys_Product")]
     public partial class SysProduct
