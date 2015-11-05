@@ -17,27 +17,32 @@ namespace Zhuang.Data.SqlCommands.Store
 
         private FileSystemWatcher _watcher;
 
+        private string _basePath;
+
         public string BasePath
         {
             get
             {
-                string result = string.Empty;
-                string basePath = ConfigurationManager.AppSettings[AppSettingsKey.SqlCommandsBasePath];
-                result= basePath == null ? @".\App_Config\SqlCommands" : basePath;
-
-                #region 如是Web环境则取Web项目的目录
-                if (HttpContext.Current != null)
+                if (string.IsNullOrEmpty(_basePath))
                 {
-                    result = result.Replace(@".\", @"~\");
+                    string configPath = ConfigurationManager.AppSettings[AppSettingsKey.SqlCommandsBasePath];
+                    string tempbasePath = configPath == null ? @".\App_Config\SqlCommands" : configPath;
 
-                    if (result.StartsWith(@"~\"))
+                    #region 如是Web环境则取Web项目的目录
+                    if (HttpContext.Current != null)
                     {
-                        result = HttpContext.Current.Server.MapPath(result);
-                    }
-                } 
-                #endregion
+                        tempbasePath = tempbasePath.Replace(@".\", @"~\");
 
-                return result;
+                        if (tempbasePath.StartsWith(@"~\"))
+                        {
+                            tempbasePath = HttpContext.Current.Server.MapPath(tempbasePath);
+                        }
+                    }
+
+                    _basePath = tempbasePath;
+                    #endregion
+                }
+                return _basePath;
             }
         }
 
