@@ -97,7 +97,7 @@ namespace Zhuang.Data.Entity.Sql
         public string BuildUpdate()
         {
             StringBuilder sbSql = new StringBuilder();
-            var updateColumns = _tableMapping.GetInsertColumns();
+            var updateColumns = _tableMapping.GetUpdateColumns();
             var keyColumns = _tableMapping.GetKeyColumns();
             var lsUpdateSet = new List<string>();
             var lsWhere = new List<string>();
