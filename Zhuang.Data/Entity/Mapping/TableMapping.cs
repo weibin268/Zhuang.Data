@@ -130,7 +130,18 @@ namespace Zhuang.Data.Entity.Mapping
 
         public IList<ColumnMapping> GetUpdateColumns()
         {
-            return GetInsertColumns();
+
+            IList<ColumnMapping> result = new List<ColumnMapping>();
+
+            foreach (var col in Columns)
+            {
+                if (!col.IsAutoGenerate && !col.IsPrimaryKey)
+                {
+                    result.Add(col);
+                }
+            }
+
+            return result;
         }
 
         public void FilterColumn(object objEntity)

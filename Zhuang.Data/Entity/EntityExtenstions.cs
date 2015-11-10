@@ -50,8 +50,16 @@ namespace Zhuang.Data
 
         public static int UpdateFields(this DbAccessor db, object objEntity, params string[] inclusiveFields)
         {
+
+
+            List<string> lsInclusiveFields = new List<string>();
+            lsInclusiveFields.AddRange(inclusiveFields);
             var mapping = new TableMapping(objEntity.GetType());
-            mapping.FilterColumn(inclusiveFields);
+            foreach (var item in mapping.GetKeyColumns())
+            {
+                lsInclusiveFields.Add(item.ColumnName);
+            }
+            mapping.FilterColumn(lsInclusiveFields.ToArray());
             ISqlBuilder sqlBuilder = new DefaultSqlBuilder(mapping);
             return db.ExecuteNonQuery(sqlBuilder.BuildUpdate(), objEntity);
         }
