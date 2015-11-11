@@ -1,6 +1,8 @@
 using System;
 using System.Data;
 using System.Data.Common;
+using Zhuang.Data.SqlCommands;
+using Zhuang.Data.SqlCommands.Store;
 using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.Pagination
@@ -24,8 +26,22 @@ namespace Zhuang.Data.Pagination
 
         public string GetCountSql(string strSql)
         {
+            strSql = RetrieveSql(strSql);
+
             string tempSql = SqlUtil.RemoveOrderByClause(strSql);
             return " select count(1) from (\n" + tempSql + "\n) tt";
+        }
+
+        protected string RetrieveSql(string strSql)
+        {
+            SqlCommand sqlCmd = SqlCommandRepository.Instance.GetSqlCommand(strSql);
+
+            if (sqlCmd != null)
+            {
+                strSql = sqlCmd.Text;
+            }
+
+            return strSql;
         }
     }
 } 

@@ -10,6 +10,8 @@ namespace Zhuang.Data.DbProviders.Oracle
     {
         public override string GetPageSql(string sql, string orderClause, int startRowIndex, int rowCount)
         {
+            sql = RetrieveSql(sql);
+
             sql = SqlUtil.RemoveOrderByClause(sql);
             StringBuilder stringBuilder = new StringBuilder(sql.Length + 100);
             stringBuilder.Append("select * from (select * from (select row_.*, rownum rownum_ from ( ");

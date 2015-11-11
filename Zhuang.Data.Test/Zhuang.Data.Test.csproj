@@ -65,6 +65,7 @@
     <Compile Include="SqlCommandsTest.cs" />
     <Compile Include="DbAccessorFactoryTest.cs" />
     <Compile Include="BulkCopyTest.cs" />
+    <Compile Include="PaginationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zhuang.Data\Zhuang.Data.csproj">
