@@ -15,8 +15,8 @@ namespace Zhuang.Data.SqlCommands.Parser
 
     public class DynamicClauseParser : ISqlCommandParser
     {
-        internal const string LEFT_BRACE_DUBLE_QUESTION_MARK = "{??";//视值为“null”或“DBNull”的参数为“有效”参数
-        internal const string LEFT_BRACE_QUESTION_MARK = "{?";//视值为“null”或“DBNull”的参数为“无效”参数
+        internal const string LEFT_BRACE_DUBLE_QUESTION_MARK = "{??";//视值为“null”、“DBNull”和“空白字符串”的参数为“有效”参数
+        internal const string LEFT_BRACE_QUESTION_MARK = "{?";//视值为“null”、“DBNull”和“空白字符串”的参数为“无效”参数
         internal const string RIGHT_BRACE = "}";
 
         private Stack removeClauseStack = new Stack();
@@ -50,7 +50,8 @@ namespace Zhuang.Data.SqlCommands.Parser
                     string tempResult = string.IsNullOrEmpty(reResult) ? result : result.Replace(reResult, "");
                     if (SqlUtil.ContainsParameterName(tempResult, c.ParameterName))
                     {
-                        if (c.Value != null && c.Value != DBNull.Value)
+                        //当值不为“null”、“DBNull”和“空白字符串”时参数值才算是有效
+                        if (c.Value != null && c.Value != DBNull.Value && c.Value.ToString().Trim() != string.Empty)
                         {
                             r = true;
                         }
