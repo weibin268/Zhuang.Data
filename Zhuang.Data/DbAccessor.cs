@@ -360,6 +360,10 @@ namespace Zhuang.Data
                 conn.Dispose();
                 Dispose();
             }
+            else
+            {
+                throw new Exception("没有要提交的事务！");
+            }
         }
 
         public void RollbackTran()
@@ -370,6 +374,10 @@ namespace Zhuang.Data
                 _dbTransaction.Rollback();
                 conn.Dispose();
                 Dispose();
+            }
+            else
+            {
+                throw new Exception("没有要回滚的事务！");
             }
         }
 
