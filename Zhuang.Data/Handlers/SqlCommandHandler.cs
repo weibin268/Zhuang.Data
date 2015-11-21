@@ -25,7 +25,7 @@ namespace Zhuang.Data.Handlers
         }
 
 
-        public void RetrieveSqlCommand(DbAccessorContext context)
+        private void RetrieveSqlCommand(DbAccessorContext context)
         {
             if (!context.DbCommand.CommandText.Trim().Contains(" "))
             {

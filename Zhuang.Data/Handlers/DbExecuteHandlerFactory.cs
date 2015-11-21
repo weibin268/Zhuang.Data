@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Zhuang.Data.Handlers
 {
-    public class HandlerFactory
+    public class DbExecuteHandlerFactory
     {
         public static IEnumerable<IDbExecuteHandler> GetDbExecuteHandlers()
         {

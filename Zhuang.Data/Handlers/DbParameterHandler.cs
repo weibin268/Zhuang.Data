@@ -9,8 +9,14 @@ namespace Zhuang.Data.Handlers
 {
     public class DbParameterHandler:IDbExecuteHandler
     {
+        public void HandleExecute(DbAccessorContext context)
+        {
+            RemoveUnnecessary(context);
+            HandleDBNull(context);
+        }
 
-        public void HandleDBNull(DbAccessorContext context)
+
+        private void HandleDBNull(DbAccessorContext context)
         {
             var dbParameters = context.DbCommand.Parameters;
 
@@ -32,7 +38,7 @@ namespace Zhuang.Data.Handlers
             }
         }
 
-        public void RemoveUnnecessary(DbAccessorContext context)
+        private void RemoveUnnecessary(DbAccessorContext context)
         {
             var dbParameters = context.DbCommand.Parameters;
             IList<string> unnecessaryParameterNames = new List<string>();
@@ -48,12 +54,6 @@ namespace Zhuang.Data.Handlers
             {
                 dbParameters.RemoveAt(unnecessaryParameterName);
             }
-        }
-
-        public void HandleExecute(DbAccessorContext context)
-        {
-            RemoveUnnecessary(context);
-            HandleDBNull(context);
         }
     }
 }

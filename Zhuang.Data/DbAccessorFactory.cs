@@ -83,7 +83,7 @@ namespace Zhuang.Data
 
             if (dba != null)
             {
-                IEnumerable<IDbExecuteHandler> dbExecuteHandlers = HandlerFactory.GetDbExecuteHandlers();
+                IEnumerable<IDbExecuteHandler> dbExecuteHandlers = DbExecuteHandlerFactory.GetDbExecuteHandlers();
 
                 foreach (IDbExecuteHandler handler in dbExecuteHandlers)
                 {

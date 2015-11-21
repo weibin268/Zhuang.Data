@@ -81,7 +81,7 @@
     <Compile Include="EnvironmentVariable\IEvnValStoreProvider.cs" />
     <Compile Include="EnvironmentVariable\SystemProvider.cs" />
     <Compile Include="Handlers\DbParameterHandler.cs" />
-    <Compile Include="Handlers\HandlerFactory.cs" />
+    <Compile Include="Handlers\DbExecuteHandlerFactory.cs" />
     <Compile Include="Handlers\IDbExecuteHandler.cs" />
     <Compile Include="DbProviders\Oracle\OracleAccessor.cs" />
     <Compile Include="Pagination\DbPagingFactory.cs" />
