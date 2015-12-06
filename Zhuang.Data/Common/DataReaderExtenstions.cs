@@ -70,7 +70,11 @@ namespace Zhuang.Data.Common
                     {
                         var objValue = reader.GetValue(i);
                         var tempValue = objValue.GetType() == typeof(DBNull) ? null : objValue;
+
+                        //类型转换,特殊处理
                         var value = SqlUtil.ConvertDbFieldValueByEntityPropertyType(tempValue, pi.PropertyType);
+
+                        //类型转换,通用处理
                         object valueChanged;
                         if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         {
