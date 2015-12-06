@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 using System.Text;
+using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.Common
 {
@@ -68,8 +69,8 @@ namespace Zhuang.Data.Common
                     if (pi != null)
                     {
                         var objValue = reader.GetValue(i);
-                        var value = objValue.GetType() == typeof(DBNull) ? null : objValue;
-
+                        var tempValue = objValue.GetType() == typeof(DBNull) ? null : objValue;
+                        var value = SqlUtil.ConvertDbFieldValueByEntityPropertyType(tempValue, pi.PropertyType);
                         object valueChanged;
                         if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         {

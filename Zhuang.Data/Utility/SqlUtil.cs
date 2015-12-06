@@ -72,6 +72,20 @@ namespace Zhuang.Data.Utility
             return dbType;
         }
 
+        public static object ConvertDbFieldValueByEntityPropertyType(object dbFieldValue,Type entityPropertyType)
+        {
+            if (dbFieldValue == null) goto End;
+
+            if (dbFieldValue.GetType() == typeof(Int64) &&
+                (entityPropertyType == typeof(Int32) || entityPropertyType == typeof(Nullable<Int32>)))
+            {
+                return Convert.ToInt32(dbFieldValue);
+            }
+
+            End:
+            return dbFieldValue;
+        }
+
         public static string RemoveOrderByClause(string sql)
         {
             Regex regex = new Regex("[{]\\s*[?]\\s*order\\s+by[\\d|\\w|\\s|$|#|@|:|-|_]*[}]|order\\s+by[\\d|\\w|\\s|$|#|@|:|-|_]*", RegexOptions.IgnoreCase | RegexOptions.Singleline);
