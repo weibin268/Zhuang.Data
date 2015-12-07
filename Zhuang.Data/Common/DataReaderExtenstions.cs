@@ -69,25 +69,14 @@ namespace Zhuang.Data.Common
                     if (pi != null)
                     {
                         var objValue = reader.GetValue(i);
-                        var tempValue = objValue.GetType() == typeof(DBNull) ? null : objValue;
+                        var value = objValue.GetType() == typeof(DBNull) ? null : objValue;
 
+                        object valueChanged;
                         //类型转换,特殊处理
-                        var value = SqlUtil.ConvertDbFieldValueByEntityPropertyType(tempValue, pi.PropertyType);
+                        valueChanged = ConvertTypeSpecialHandle(value, pi);
 
                         //类型转换,通用处理
-                        object valueChanged;
-                        if (pi.PropertyType.IsGenericType && pi.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                        {
-                            var typeGeneric = pi.PropertyType.GetGenericTypeDefinition()
-                                .MakeGenericType(new Type[] { Nullable.GetUnderlyingType(pi.PropertyType) });
-                            object nullableValue = Activator.CreateInstance(typeGeneric);
-                            nullableValue = value;
-                            valueChanged = nullableValue;
-                        }
-                        else
-                        {
-                            valueChanged = Convert.ChangeType(value, pi.PropertyType);
-                        }
+                        valueChanged = ConvertTypeCommonHandle(valueChanged, pi);
 
                         pi.SetValue(entity, valueChanged, null);
                     }
@@ -96,5 +85,44 @@ namespace Zhuang.Data.Common
             }
             return entity;
         }
+
+        private static object ConvertTypeSpecialHandle(object targetValue, PropertyInfo sourcePropertyInfo)
+        {
+
+            Type sourceType = sourcePropertyInfo.PropertyType;
+
+            if (targetValue == null) goto End;
+
+            if (targetValue.GetType() == typeof(Int64) &&
+                (sourceType == typeof(Int32) || sourceType == typeof(Nullable<Int32>)))
+            {
+                return Convert.ToInt32(targetValue);
+            }
+
+            End:
+            return targetValue;
+        }
+
+
+        private static object ConvertTypeCommonHandle(object targetValue, PropertyInfo sourcePropertyInfo)
+        {
+            object result;
+
+            if (sourcePropertyInfo.PropertyType.IsGenericType && sourcePropertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>))
+            {
+                var typeGeneric = sourcePropertyInfo.PropertyType.GetGenericTypeDefinition()
+                    .MakeGenericType(new Type[] { Nullable.GetUnderlyingType(sourcePropertyInfo.PropertyType) });
+                object nullableValue = Activator.CreateInstance(typeGeneric);
+                nullableValue = targetValue;
+                result = nullableValue;
+            }
+            else
+            {
+                result = Convert.ChangeType(targetValue, sourcePropertyInfo.PropertyType);
+            }
+
+            return result;
+        }
+
     }
 }
