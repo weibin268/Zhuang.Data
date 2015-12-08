@@ -4,6 +4,10 @@ using System.Text;
 
 namespace Zhuang.Data.Annotations
 {
+
+    /// <summary>
+    /// 用于标识实体所对应的表名
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class TableAttribute : Attribute
     {

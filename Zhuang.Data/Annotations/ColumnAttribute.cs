@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Zhuang.Data.Annotations
 {
+    /// <summary>
+    /// 用于标识实体对应表字段的名称
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
     public class ColumnAttribute : Attribute
     {
