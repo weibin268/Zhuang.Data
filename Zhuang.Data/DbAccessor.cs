@@ -259,6 +259,30 @@ namespace Zhuang.Data
             return entity;
         }
 
+        public IDictionary<string, object> QueryDictionary(string strSql, object objParameters = null)
+        {
+            IDictionary<string, object> result;
+
+            using (IDataReader dr = ExecuteReader(strSql, objParameters))
+            {
+                result  = dr.ReadDictionary();
+            }
+
+            return result;
+        }
+
+        public IList<IDictionary<string, object>> QueryDictionaries(string strSql, object objParameters = null)
+        {
+            IList<IDictionary<string, object>> result;
+
+            using (IDataReader dr = ExecuteReader(strSql, objParameters))
+            {
+                result = dr.ReadDictionaries();
+            }
+
+            return result;
+        }
+
 
         public DbParameter[] GetDbParameters(object objParameters)
         {

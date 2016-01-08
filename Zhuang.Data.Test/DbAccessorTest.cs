@@ -32,6 +32,22 @@ namespace Zhuang.Data.Test
         }
 
         [TestMethod]
+        public void QueryDictionary()
+        {
+            IDictionary<string,object> dic =  _dba.QueryDictionary("select top 1 * from sys_product");
+
+            Console.WriteLine(dic["ProductId"]);
+        }
+
+        [TestMethod]
+        public void QueryDictionaries()
+        {
+            var dics = _dba.QueryDictionaries("select top 10 * from sys_product");
+
+            Console.WriteLine(dics[5]["ProductId"]);
+        }
+
+        [TestMethod]
         public void Trace()
         {
             DbAccessor dba = DbAccessor.Create();
