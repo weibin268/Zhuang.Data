@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zhuang.Data.Common
 {
-    public static class AppSettingsKey
+    static class AppSettingsKey
     {
         public const string SqlCommandsBasePath = "Zhuang.Data.SqlCommandsBasePath";
 
