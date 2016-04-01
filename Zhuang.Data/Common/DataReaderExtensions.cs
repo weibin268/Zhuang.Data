@@ -7,7 +7,7 @@ using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.Common
 {
-    public static class DataReaderExtenstions
+    public static class DataReaderExtensions
     {
         public static IList<IDictionary<string, object>> ReadDictionaries(this IDataReader reader)
         {

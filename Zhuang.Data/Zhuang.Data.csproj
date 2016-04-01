@@ -104,9 +104,9 @@
     <Compile Include="DbProviders\SqlServer\SqlServerAccessor.cs" />
     <Compile Include="DbProviders\MySql\MySqlAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\DataReaderExtenstions.cs" />
+    <Compile Include="Common\DataReaderExtensions.cs" />
     <Compile Include="Utility\DataTableUtil.cs" />
-    <Compile Include="Common\Extenstions.cs" />
+    <Compile Include="Common\Extensions.cs" />
     <Compile Include="Utility\SqlUtil.cs" />
     <Compile Include="Handlers\TraceHandler.cs" />
   </ItemGroup>
