@@ -90,9 +90,10 @@
     <Compile Include="Pagination\DbPaging.cs" />
     <Compile Include="DbProviders\Oracle\OraclePaging.cs" />
     <Compile Include="SqlCommands\Parser\DynamicClauseParser.cs" />
+    <Compile Include="SqlCommands\Parser\EvnValParameterParser.cs" />
     <Compile Include="SqlCommands\Parser\ISqlCommandParser.cs" />
-    <Compile Include="SqlCommands\Parser\ParameterNameParser.cs" />
-    <Compile Include="SqlCommands\Parser\ReplacementParser.cs" />
+    <Compile Include="SqlCommands\Parser\NormalParameterParser.cs" />
+    <Compile Include="SqlCommands\Parser\ValueParameterParser.cs" />
     <Compile Include="SqlCommands\SqlCommand.cs" />
     <Compile Include="Handlers\SqlCommandHandler.cs" />
     <Compile Include="SqlCommands\Store\AssemblyResourceProvider.cs" />

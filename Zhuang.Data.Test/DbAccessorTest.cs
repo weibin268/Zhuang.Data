@@ -27,7 +27,7 @@ namespace Zhuang.Data.Test
         public void QueryDataTable()
         {
 
-            var dt = _dba.QueryDataTable("select top 10 * from sys_product");
+            var dt = _dba.QueryDataTable("select top 10 *,'{time}' as a,'$time$' as b from sys_product", new { time="ttt"});
             Console.WriteLine(DataTableUtil.ToString(dt));
         }
 

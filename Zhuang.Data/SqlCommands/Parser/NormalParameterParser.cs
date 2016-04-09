@@ -8,7 +8,7 @@ using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.SqlCommands.Parser
 {
-    public class ParameterNameParser : ISqlCommandParser
+    public class NormalParameterParser : ISqlCommandParser
     {
 
 

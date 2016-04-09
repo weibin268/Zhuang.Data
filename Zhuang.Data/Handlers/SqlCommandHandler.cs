@@ -20,6 +20,8 @@ namespace Zhuang.Data.Handlers
 
             ParseReplacement(context);
 
+            ParseEvnValParameter(context);
+
             ParseDynamicClause(context);
 
         }
@@ -62,7 +64,7 @@ namespace Zhuang.Data.Handlers
 
             cmd.DbAccessor = context.DbAccessor;
             cmd.Text = context.DbCommand.CommandText;
-            new ParameterNameParser().Parse(cmd);
+            new NormalParameterParser().Parse(cmd);
 
             context.DbCommand.CommandText = cmd.Text;
         }
@@ -78,7 +80,23 @@ namespace Zhuang.Data.Handlers
             }
 
             cmd.Text = context.DbCommand.CommandText;
-            new ReplacementParser().Parse(cmd);
+            new ValueParameterParser().Parse(cmd);
+
+            context.DbCommand.CommandText = cmd.Text;
+        }
+
+        private void ParseEvnValParameter(DbAccessorContext context)
+        {
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.DbAccessor = context.DbAccessor;
+            foreach (DbParameter p in context.DbCommand.Parameters)
+            {
+                cmd.Parameters.Add(p);
+            }
+
+            cmd.Text = context.DbCommand.CommandText;
+            new EvnValParameterParser().Parse(cmd);
 
             context.DbCommand.CommandText = cmd.Text;
         }

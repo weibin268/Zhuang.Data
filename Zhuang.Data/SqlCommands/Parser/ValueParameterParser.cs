@@ -7,7 +7,7 @@ using Zhuang.Data.EnvironmentVariable;
 
 namespace Zhuang.Data.SqlCommands.Parser
 {
-    public class ReplacementParser : ISqlCommandParser
+    public class ValueParameterParser : ISqlCommandParser
     {
         public SqlCommand Parse(SqlCommand rawSqlCommand)
         {
@@ -30,16 +30,6 @@ namespace Zhuang.Data.SqlCommands.Parser
                     continue;
                 }
 
-                var evnVal = EvnValRepository.Instance.GetEvnVal(valueParam);
-                if (!string.IsNullOrEmpty(evnVal == null ? null : evnVal.ToString()))
-                {
-                    lsReplacement.Add(new Replacement()
-                    {
-                        OldText = match.Value,
-                        NewText = evnVal.ToString()
-                    });
-                    continue;
-                }
             }
 
             foreach (var replacement in lsReplacement)
