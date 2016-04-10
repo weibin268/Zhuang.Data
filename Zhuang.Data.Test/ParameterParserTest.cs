@@ -40,5 +40,17 @@ namespace Zhuang.Data.Test
             Assert.AreEqual<string>("zwb", v);
         }
 
+        [TestMethod]
+        public void NormalParameterTest()
+        {
+            var v = _dba.ExecuteScalar<string>("select #P#", new { P = "zwb" });
+            Console.WriteLine(v);
+            Assert.AreEqual<string>("zwb", v);
+
+            var v2 = _dba.ExecuteScalar<string>("select @P", new { P = "zwb" });
+            Console.WriteLine(v2);
+            Assert.AreEqual<string>("zwb", v2);
+        }
+
     }
 }
