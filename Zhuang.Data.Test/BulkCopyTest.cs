@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data;
 using System.Data.SqlClient;
+using Zhuang.Data.BulkCopy;
 
 namespace Zhuang.Data.Test
 {
@@ -9,7 +10,6 @@ namespace Zhuang.Data.Test
     public class BulkCopyTest
     {
         DbAccessor _dba = DbAccessor.Get();
-
 
         [TestMethod]
         public void BulkWriteToServer()
@@ -27,7 +27,7 @@ namespace Zhuang.Data.Test
             }
 
             _dba.BulkWriteToServer(dt);
-            _dba.BulkWriteToServer(dt,0,new SqlBulkCopyColumnMapping("ProductName", "ProductName"));
+            _dba.BulkWriteToServer(dt,0,new BulkCopyColumnMapping("ProductName", "ProductName"));
 
         }
     }

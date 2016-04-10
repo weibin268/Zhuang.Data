@@ -18,7 +18,11 @@ namespace Zhuang.Data.BulkCopy
             {
                 dbBulkCopy = new SqlServerBulkCopy(connectionString);
             }
-            
+            else if (dba.GetType() == typeof(OracleAccessor))
+            {
+                dbBulkCopy = new Oracle_BulkCopy(connectionString);
+            }
+
             if (dbBulkCopy != null)
             {
                 return dbBulkCopy;

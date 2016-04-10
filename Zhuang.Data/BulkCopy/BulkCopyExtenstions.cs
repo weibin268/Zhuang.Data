@@ -9,7 +9,7 @@ namespace Zhuang.Data
 {
     public static class BulkCopyExtenstions
     {
-        public static void BulkWriteToServer(this DbAccessor db, DataTable table, int batchSize = 0, params SqlBulkCopyColumnMapping[] columnMappings)
+        public static void BulkWriteToServer(this DbAccessor db, DataTable table, int batchSize = 0, params BulkCopyColumnMapping[] columnMappings)
         {
             DbBulkCopy dbBulkCopy = DbBulkCopyFactory.GetDbBulkCopy(db, db.ConnectionString);
             dbBulkCopy.BulkCopyTimeout = db.CommandTimeout;

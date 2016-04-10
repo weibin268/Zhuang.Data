@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -9,24 +10,24 @@ using Zhuang.Data.Common;
 
 namespace Zhuang.Data.DbProviders.SqlServer
 {
-    public class SqlServerBulkCopy : DbBulkCopy
+    public class Oracle_BulkCopy : DbBulkCopy
     {
-        public SqlServerBulkCopy(string connectionString) : base(connectionString)
+        public Oracle_BulkCopy(string connectionString) : base(connectionString)
         { }
 
         public override void WriteToServer(string destinationTableName, DataTable table,
             int batchSize = 0, params BulkCopyColumnMapping[] columnMappings)
         {
-            SqlBulkCopy bulkCopy = null;
+            OracleBulkCopy bulkCopy = null;
             try
             {
                 if (DbTransaction != null)
                 {
-                    bulkCopy = new SqlBulkCopy((SqlConnection)DbTransaction.Connection, SqlBulkCopyOptions.Default, (SqlTransaction)DbTransaction);
+                    bulkCopy = new OracleBulkCopy((OracleConnection)DbTransaction.Connection, OracleBulkCopyOptions.Default);
                 }
                 else
                 {
-                    bulkCopy = new SqlBulkCopy(_connectionString);
+                    bulkCopy = new OracleBulkCopy(_connectionString);
                 }
 
                 bulkCopy.DestinationTableName = destinationTableName;
@@ -42,7 +43,7 @@ namespace Zhuang.Data.DbProviders.SqlServer
                 {
                     foreach (var item in columnMappings)
                     {
-                        var mapping = new SqlBulkCopyColumnMapping();
+                        var mapping = new OracleBulkCopyColumnMapping();
 
                         if (item.DestinationColumn != null)
                             mapping.DestinationColumn = item.DestinationColumn;

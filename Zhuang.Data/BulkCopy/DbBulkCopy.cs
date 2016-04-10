@@ -23,7 +23,7 @@ namespace Zhuang.Data.BulkCopy
         }
 
         public abstract void WriteToServer(string destinationTableName, DataTable table, 
-            int BatchSize = 0, params SqlBulkCopyColumnMapping[] columnMappings);
+            int BatchSize = 0, params BulkCopyColumnMapping[] columnMappings);
 
     }
 }

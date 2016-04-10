@@ -59,10 +59,12 @@
     <Compile Include="Annotations\IgnoreAttribute.cs" />
     <Compile Include="Annotations\KeyAttribute.cs" />
     <Compile Include="Annotations\TableAttribute.cs" />
+    <Compile Include="BulkCopy\BulkCopyColumnMapping.cs" />
     <Compile Include="BulkCopy\BulkCopyExtenstions.cs" />
     <Compile Include="BulkCopy\DbBulkCopy.cs" />
     <Compile Include="BulkCopy\DbBulkCopyFactory.cs" />
     <Compile Include="Common\AppSettingsKey.cs" />
+    <Compile Include="DbProviders\Oracle\Oracle_BulkCopy.cs" />
     <Compile Include="DbProviders\SqlServer\SqlServerBulkCopy.cs" />
     <Compile Include="Common\Delegates.cs" />
     <Compile Include="Common\RegexPattern.cs" />
