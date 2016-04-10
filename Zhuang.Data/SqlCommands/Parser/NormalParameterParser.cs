@@ -26,7 +26,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
             {
-                string namedParam = match.Groups["NamedParam"].Value.Trim();
+                string namedParam = match.Groups["NormalParam"].Value.Trim();
                 if (string.IsNullOrEmpty(namedParam)) continue;
 
                 lsReplacement.Add(new Replacement()
