@@ -12,11 +12,11 @@ namespace Zhuang.Data.SqlCommands.Parser
     {
 
 
-        public SqlCommand Parse(SqlCommand rawSqlCommand)
+        public void Parse(SqlCommand sqlCommand)
         {
             string parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_AT;
 
-            string strDbProviderName = EvnValService.GetDbAccessorDbProviderName(rawSqlCommand.DbAccessor);
+            string strDbProviderName = EvnValService.GetDbAccessorDbProviderName(sqlCommand.DbAccessor);
             if (strDbProviderName == DbProviderName.Oracle.ToString())
             {
                 parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_COLON;
@@ -24,7 +24,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             IList<Replacement> lsReplacement = new List<Replacement>();
 
-            foreach (Match match in RegexPattern.ParameterPattern.Matches(rawSqlCommand.Text))
+            foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
             {
                 string namedParam = match.Groups["NamedParam"].Value.Trim();
                 if (string.IsNullOrEmpty(namedParam)) continue;
@@ -38,10 +38,8 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             foreach (var replacement in lsReplacement)
             {
-                rawSqlCommand.Text = rawSqlCommand.Text.Replace(replacement.OldText, replacement.NewText);
+                sqlCommand.Text = sqlCommand.Text.Replace(replacement.OldText, replacement.NewText);
             }
-
-            return null;
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Zhuang.Data.SqlCommands.Parser
 {
     public interface ISqlCommandParser
     {
-        SqlCommand Parse(SqlCommand rawSqlCommand);
+        void Parse(SqlCommand sqlCommand);
     }
 }

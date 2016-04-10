@@ -21,17 +21,18 @@ namespace Zhuang.Data.SqlCommands.Parser
 
         private Stack removeClauseStack = new Stack();
 
-        public SqlCommand Parse(SqlCommand rawSqlCommand)
+        public void Parse(SqlCommand sqlCommand)
         {
-            RecursiveFindDynamicClause(RegexPattern.DynamicClausePattern.Matches(rawSqlCommand.Text), rawSqlCommand);
+            if (!DynamicClauseParser.IsCanParse(sqlCommand.Text)) return;
+
+            RecursiveFindDynamicClause(RegexPattern.DynamicClausePattern.Matches(sqlCommand.Text), sqlCommand);
 
             foreach (var remove in removeClauseStack)
             {
-                rawSqlCommand.Text = rawSqlCommand.Text.Replace(remove.ToString(), "");
+                sqlCommand.Text = sqlCommand.Text.Replace(remove.ToString(), "");
             }
 
-            rawSqlCommand.Text = rawSqlCommand.Text.Replace(LEFT_BRACE_DUBLE_QUESTION_MARK, "").Replace(LEFT_BRACE_QUESTION_MARK, "").Replace(RIGHT_BRACE, "");
-            return rawSqlCommand;
+            sqlCommand.Text = sqlCommand.Text.Replace(LEFT_BRACE_DUBLE_QUESTION_MARK, "").Replace(LEFT_BRACE_QUESTION_MARK, "").Replace(RIGHT_BRACE, "");
         }
 
         public string RecursiveFindDynamicClause(MatchCollection matchs, SqlCommand sqlCommand)

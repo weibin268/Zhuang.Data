@@ -16,16 +16,8 @@ namespace Zhuang.Data.Handlers
         {
             RetrieveSqlCommand(context);
 
-            ParseParameterName(context);
-
-            ParseReplacement(context);
-
-            ParseEvnValParameter(context);
-
-            ParseDynamicClause(context);
-
+            ParseSqlCommand(context);
         }
-
 
         private void RetrieveSqlCommand(DbAccessorContext context)
         {
@@ -39,66 +31,30 @@ namespace Zhuang.Data.Handlers
             }
 
         }
-
-        private void ParseDynamicClause(DbAccessorContext context)
-        {
-
-            if (!DynamicClauseParser.IsCanParse(context.DbCommand.CommandText)) return;
-
-            SqlCommand cmd = new SqlCommand();
-
-            cmd.DbAccessor = context.DbAccessor;
-            cmd.Text = context.DbCommand.CommandText;
-            foreach (DbParameter p in context.DbCommand.Parameters)
-            {
-                cmd.Parameters.Add(p);
-            }
-            var parser = new DynamicClauseParser();
-            cmd = parser.Parse(cmd);
-            context.DbCommand.CommandText = cmd.Text;
-        }
-
-        private void ParseParameterName(DbAccessorContext context)
+      
+        private void ParseSqlCommand(DbAccessorContext context)
         {
             SqlCommand cmd = new SqlCommand();
-
-            cmd.DbAccessor = context.DbAccessor;
-            cmd.Text = context.DbCommand.CommandText;
-            new NormalParameterParser().Parse(cmd);
-
-            context.DbCommand.CommandText = cmd.Text;
-        }
-
-        private void ParseReplacement(DbAccessorContext context)
-        {
-            SqlCommand cmd = new SqlCommand();
-
             cmd.DbAccessor = context.DbAccessor;
             foreach (DbParameter p in context.DbCommand.Parameters)
             {
                 cmd.Parameters.Add(p);
             }
-
             cmd.Text = context.DbCommand.CommandText;
-            new ValueParameterParser().Parse(cmd);
 
-            context.DbCommand.CommandText = cmd.Text;
-        }
+            IList<ISqlCommandParser> parsers = new List<ISqlCommandParser>();
+            parsers.Add(new NormalParameterParser());
+            parsers.Add(new ValueParameterParser());
+            parsers.Add(new EvnValParameterParser());
+            parsers.Add(new DynamicClauseParser());
 
-        private void ParseEvnValParameter(DbAccessorContext context)
-        {
-            SqlCommand cmd = new SqlCommand();
-
-            cmd.DbAccessor = context.DbAccessor;
-            foreach (DbParameter p in context.DbCommand.Parameters)
+            foreach (var p in parsers)
             {
-                cmd.Parameters.Add(p);
+                p.Parse(cmd);
             }
 
-            cmd.Text = context.DbCommand.CommandText;
-            new EvnValParameterParser().Parse(cmd);
-
             context.DbCommand.CommandText = cmd.Text;
+
         }
     }
 }
