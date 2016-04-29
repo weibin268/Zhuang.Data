@@ -110,7 +110,8 @@ namespace Zhuang.Data
                 dba = new OracleAccessor(connectionString);
                 EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.Oracle);
             }
-            else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower())
+            else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower()
+                || providerName == "MySql.Data.MySqlClient")
             {
                 dba = new MySqlAccessor(connectionString);
                 EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.MySql);
