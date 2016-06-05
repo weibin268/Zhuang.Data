@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using Zhuang.Data.Common;
 using Zhuang.Data.Utility;
+using Zhuang.Data.Extensions;
 
 namespace Zhuang.Data
 {

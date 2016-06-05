@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using Zhuang.Data.Utility;
 
-namespace Zhuang.Data.Common
+namespace Zhuang.Data.Extensions
 {
     public static class DataReaderExtensions
     {
