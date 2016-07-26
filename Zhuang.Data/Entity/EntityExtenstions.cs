@@ -35,12 +35,12 @@ namespace Zhuang.Data
 
         }
 
-        public static T SelectList<T>(this DbAccessor db, object objParameters)
+        public static IList<T> SelectList<T>(this DbAccessor db, object objParameters)
         {
             var tableMapping = new TableMapping(typeof(T));
             ISqlBuilder sqlBuilder = new DefaultSqlBuilder(tableMapping);
 
-            return db.QueryEntity<T>(sqlBuilder.BuildSelectList(), objParameters);
+            return db.QueryEntities<T>(sqlBuilder.BuildSelectList(), objParameters);
         }
 
         public static int Delete(this DbAccessor db, object objEntity)
