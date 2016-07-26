@@ -8,6 +8,8 @@ namespace Zhuang.Data.Entity.Sql
     {
         string BuildSelect();
 
+        string BuildSelectList();
+
         string BuildInsert();
 
         string BuildUpdate();

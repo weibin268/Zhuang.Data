@@ -45,6 +45,35 @@ namespace Zhuang.Data.Entity.Sql
             return sbSql.ToString();
         }
 
+        public string BuildSelectList()
+        {
+            StringBuilder sbSql = new StringBuilder();
+            var selectColumns = _tableMapping.Columns;
+            var wherecolumns = _tableMapping.Columns;
+
+            var lsSelect = new List<string>();
+            var lsWhere = new List<string>();
+
+
+            foreach (var col in selectColumns)
+            {
+                lsSelect.Add(string.Format("{0} as {1}", col.ColumnName, col.PropertyName));
+            }
+
+            lsWhere.Add("1=1");
+            foreach (var col in wherecolumns)
+            {
+                lsWhere.Add("{? " + string.Format("and {0}=#{1}#", col.ColumnName, col.PropertyName) + " }");
+            }
+
+            sbSql.Append(string.Format("Select {0} \n from {1} ",
+                    string.Join(" , ", lsSelect.ToArray()), _tableMapping.TableName))
+                .Append(" Where ")
+                .Append(string.Join(" ", lsWhere.ToArray()));
+
+            return sbSql.ToString();
+        }
+
         public string BuildDelete()
         {
             StringBuilder sbSql = new StringBuilder();
