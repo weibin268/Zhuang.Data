@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using Zhuang.Data.Entity.Mapping;
+using Zhuang.Data.Exceptions;
 
 namespace Zhuang.Data.Entity.Sql
 {
     public class DefaultSqlBuilder : ISqlBuilder
     {
-
         private TableMapping _tableMapping;
 
         public DefaultSqlBuilder(TableMapping tableMapping)
@@ -25,7 +25,7 @@ namespace Zhuang.Data.Entity.Sql
             var lsWhere = new List<string>();
 
             if (keyColumns.Count < 1)
-                throw new Exception("实体没有设置主键！");
+                throw new EntityException("实体没有设置主键！");
 
             foreach (var col in selectColumns)
             {
@@ -51,7 +51,7 @@ namespace Zhuang.Data.Entity.Sql
             var keyColumns = _tableMapping.GetKeyColumns();
             var lsWhere = new List<string>();
             if (keyColumns.Count < 1)
-                throw new Exception("实体没有设置主键！");
+                throw new EntityException("实体没有设置主键！");
 
 
             foreach (var keyCol in keyColumns)
@@ -75,7 +75,7 @@ namespace Zhuang.Data.Entity.Sql
             var lsParameterNames = new List<string>();
 
             if (insertColumns.Count < 1)
-                throw new Exception("实体没有对应要插入到数据的属性！");
+                throw new EntityException("实体没有对应要插入到数据的属性！");
 
             foreach (var col in insertColumns)
             {
@@ -93,7 +93,6 @@ namespace Zhuang.Data.Entity.Sql
             return sbSql.ToString();
         }
 
-        
         public string BuildUpdate()
         {
             StringBuilder sbSql = new StringBuilder();
@@ -103,10 +102,10 @@ namespace Zhuang.Data.Entity.Sql
             var lsWhere = new List<string>();
 
             if (keyColumns.Count < 1)
-                throw new Exception("实体没有设置主键！");
+                throw new EntityException("实体没有设置主键！");
 
             if (updateColumns.Count < 1)
-                throw new Exception("实体没有对应要更新到数据的属性！");
+                throw new EntityException("实体没有对应要更新到数据的属性！");
 
             foreach (var col in updateColumns)
             {

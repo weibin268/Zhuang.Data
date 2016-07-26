@@ -82,6 +82,8 @@
     <Compile Include="Common\EvnValService.cs" />
     <Compile Include="EnvironmentVariable\IEvnValStoreProvider.cs" />
     <Compile Include="EnvironmentVariable\SystemProvider.cs" />
+    <Compile Include="Exceptions\EntityException.cs" />
+    <Compile Include="Exceptions\MyException.cs" />
     <Compile Include="Handlers\DbParameterHandler.cs" />
     <Compile Include="Handlers\DbExecuteHandlerFactory.cs" />
     <Compile Include="Handlers\IDbExecuteHandler.cs" />

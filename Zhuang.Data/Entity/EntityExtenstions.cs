@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Zhuang.Data.Entity.Mapping;
 using Zhuang.Data.Entity.Sql;
+using System.Reflection;
 
 namespace Zhuang.Data
 {
@@ -10,14 +11,60 @@ namespace Zhuang.Data
     {
         public static T Select<T>(this DbAccessor db, object objIdParameters)
         {
-            ISqlBuilder sqlBuilder = new DefaultSqlBuilder(new TableMapping(typeof(T)));
+            var tableMapping = new TableMapping(typeof(T));
+            ISqlBuilder sqlBuilder = new DefaultSqlBuilder(tableMapping);
+
+            #region 处理参数为基础类型，即直接为主键的值
+            if (objIdParameters.GetType() == typeof(string) || objIdParameters.GetType().IsPrimitive)
+            {
+                var dicParam = new Dictionary<string, object>();
+
+                var keyColumns = tableMapping.GetKeyColumns();
+
+                if (keyColumns.Count == 0)
+                    throw new Exceptions.EntityException("实体没有设置主键！");
+
+                string keyColumnName = keyColumns[0].ColumnName;
+
+                dicParam.Add(keyColumnName, objIdParameters);
+                objIdParameters = dicParam;
+            }
+            #endregion
+
             return db.QueryEntity<T>(sqlBuilder.BuildSelect(), objIdParameters);
+
         }
 
         public static int Delete(this DbAccessor db, object objEntity)
         {
             ISqlBuilder sqlBuilder = new DefaultSqlBuilder(new TableMapping(objEntity.GetType()));
             return db.ExecuteNonQuery(sqlBuilder.BuildDelete(), objEntity);
+        }
+
+        public static int Delete<T>(this DbAccessor db, object objIdParameters)
+        {
+
+            var tableMapping = new TableMapping(typeof(T));
+            ISqlBuilder sqlBuilder = new DefaultSqlBuilder(tableMapping);
+
+            #region 处理参数为基础类型，即直接为主键的值
+            if (objIdParameters.GetType() == typeof(string) || objIdParameters.GetType().IsPrimitive)
+            {
+                var dicParam = new Dictionary<string, object>();
+
+                var keyColumns = tableMapping.GetKeyColumns();
+
+                if (keyColumns.Count == 0)
+                    throw new Exceptions.EntityException("实体没有设置主键！");
+
+                string keyColumnName = keyColumns[0].ColumnName;
+
+                dicParam.Add(keyColumnName, objIdParameters);
+                objIdParameters = dicParam;
+            }
+            #endregion
+
+            return db.ExecuteNonQuery(sqlBuilder.BuildDelete(), objIdParameters);
         }
 
         public static int Insert(this DbAccessor db, object objEntity)
