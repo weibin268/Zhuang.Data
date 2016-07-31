@@ -59,9 +59,9 @@ namespace Zhuang.Data.EnvironmentVariable
             if (_dicEvnVal.ContainsKey(key))
             {
                 object objValue = _dicEvnVal[key];
-                if (typeof(Fun<string>) == objValue.GetType())
+                if (typeof(MyFunc<string>) == objValue.GetType())
                 {
-                    return ((Fun<string>)objValue)();
+                    return ((MyFunc<string>)objValue)();
                 }
                 else
                 {

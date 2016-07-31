@@ -5,6 +5,6 @@ using System.Text;
 namespace Zhuang.Data.Common
 {
 
-    public delegate T Fun<T>();
+    public delegate T MyFunc<T>();
 
 }
