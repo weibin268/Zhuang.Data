@@ -37,10 +37,11 @@ namespace Zhuang.Data.Entity.Sql
                 lsWhere.Add(string.Format("{0}=#{1}#", keyCol.ColumnName, keyCol.PropertyName));
             }
 
-            sbSql.Append(string.Format("Select {0} \n from {1} ",
-                    string.Join(" , ", lsSelect.ToArray()), _tableMapping.TableName))
-                .Append(" Where ")
-                .Append(string.Join(" And ", lsWhere.ToArray()));
+            sbSql.AppendFormat("Select {0} \n From {1} Where {2}",
+                string.Join(" , ", lsSelect.ToArray()),
+                _tableMapping.TableName,
+                string.Join(" And ", lsWhere.ToArray())
+                );
 
             return sbSql.ToString();
         }
