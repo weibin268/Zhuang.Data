@@ -114,12 +114,11 @@ namespace Zhuang.Data.Entity.Sql
                 lsParameterNames.Add(string.Format("#{0}#", col.PropertyName));
             }
 
-            sbSql.AppendLine(string.Format("Insert into {0}({1})",
+            sbSql.AppendFormat("Insert into {0}({1}) values({2})",
                 _tableMapping.TableName,
-                string.Join(",", lsCoumnNames.ToArray())))
-                .Append(string.Format("values({0})",
-                string.Join(",", lsParameterNames.ToArray())));
-
+                string.Join(",", lsCoumnNames.ToArray()),
+                string.Join(",", lsParameterNames.ToArray())
+                );
 
             return sbSql.ToString();
         }
@@ -148,11 +147,11 @@ namespace Zhuang.Data.Entity.Sql
                 lsWhere.Add(string.Format("{0}=#{1}#", keyCol.ColumnName, keyCol.PropertyName));
             }
 
-            sbSql.Append(string.Format("Update {0} set ", _tableMapping.TableName))
-                .AppendLine(string.Join(" , ", lsUpdateSet.ToArray()))
-                .Append(" Where ")
-                .Append(string.Join(" And ", lsWhere.ToArray()));
-
+            sbSql.AppendFormat("Update {0} set {1}  Where {2}",
+                _tableMapping.TableName,
+                string.Join(" , ", lsUpdateSet.ToArray()),
+                string.Join(" And ", lsWhere.ToArray())
+                );
 
             return sbSql.ToString();
         }
