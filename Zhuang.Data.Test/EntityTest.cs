@@ -4,6 +4,7 @@ using Zhuang.Data.Annotations;
 using Zhuang.Data.Handlers;
 using Zhuang.Data.Utility;
 using Zhuang.Data.Test.Models;
+using System.Linq;
 
 namespace Zhuang.Data.Test
 {
@@ -29,6 +30,14 @@ namespace Zhuang.Data.Test
         public void Select()
         {
             var products = _dba.Select<SysProduct>(new { ProductId = 1 });
+            Console.WriteLine(products.ProductName);
+        }
+
+        [TestMethod]
+        public void SelectList()
+        {
+            var products = _dba.SelectList<SysProduct>(new { ProductId = 1 }).FirstOrDefault();
+
             Console.WriteLine(products.ProductName);
         }
 
