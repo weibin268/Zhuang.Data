@@ -19,7 +19,7 @@ namespace Zhuang.Data.SqlCommands.Parser
                 string evnParam = match.Groups["EvnParam"].Value.Trim();
                 if (string.IsNullOrEmpty(evnParam)) continue;
 
-                var evnVal = EvnValRepository.Instance.GetEvnVal(evnParam);
+                var evnVal = EnvValRepository.Instance.GetEvnVal(evnParam);
                 if (!string.IsNullOrEmpty(evnVal == null ? null : evnVal.ToString()))
                 {
                     lsReplacement.Add(new Replacement()

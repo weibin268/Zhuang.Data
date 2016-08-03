@@ -6,7 +6,7 @@ using Zhuang.Data.Common;
 namespace Zhuang.Data.EnvironmentVariable
 {
 
-    class SystemProvider : IEvnValStoreProvider
+    class SystemProvider : IEnvValStoreProvider
     {
         public Dictionary<string, object> GetEnvironmentVariables()
         {

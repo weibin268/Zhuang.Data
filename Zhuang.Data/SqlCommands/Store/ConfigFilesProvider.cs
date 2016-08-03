@@ -205,7 +205,7 @@ namespace Zhuang.Data.SqlCommands.Store
                     string strDbAccessorHashCode = EvnValService.GetDefaultDbAccessorHashCode();
                     if (strDbAccessorHashCode != null)
                     {
-                        string strDbProviderName = EvnValRepository.Instance.GetEvnVal(strDbAccessorHashCode).ToString();
+                        string strDbProviderName = EnvValRepository.Instance.GetEvnVal(strDbAccessorHashCode).ToString();
                         if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
                         {
                             result = false;

@@ -11,23 +11,23 @@ namespace Zhuang.Data.Common
 
         public static void SetDbAccessorDbProviderName(DbAccessor dba, DbProviderName dbProviderName)
         {
-            EvnValRepository.Instance.AddEvnVal(dba.GetHashCode().ToString(), dbProviderName.ToString());
+            EnvValRepository.Instance.AddEvnVal(dba.GetHashCode().ToString(), dbProviderName.ToString());
         }
 
         public static string GetDbAccessorDbProviderName(DbAccessor dba)
         {
-            var result = EvnValRepository.Instance.GetEvnVal(dba.GetHashCode().ToString());
+            var result = EnvValRepository.Instance.GetEvnVal(dba.GetHashCode().ToString());
             return result == null ? null : result.ToString();
         }
 
         public static void SetDefaultDbAccessorHashCode(DbAccessor dba)
         {
-            EvnValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.GetHashCode().ToString());
+            EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.GetHashCode().ToString());
         }
 
         public static string GetDefaultDbAccessorHashCode()
         {
-            var result = EvnValRepository.Instance.GetEvnVal(DefaultDbAccessorHashCode_Key);
+            var result = EnvValRepository.Instance.GetEvnVal(DefaultDbAccessorHashCode_Key);
             return result == null ? null : result.ToString();
         }
 

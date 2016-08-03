@@ -78,9 +78,9 @@
     <Compile Include="Entity\Mapping\TableMapping.cs" />
     <Compile Include="Entity\Sql\DefaultSqlBuilder.cs" />
     <Compile Include="Entity\Sql\ISqlBuilder.cs" />
-    <Compile Include="EnvironmentVariable\EvnValRepository.cs" />
+    <Compile Include="EnvironmentVariable\EnvValRepository.cs" />
     <Compile Include="Common\EvnValService.cs" />
-    <Compile Include="EnvironmentVariable\IEvnValStoreProvider.cs" />
+    <Compile Include="EnvironmentVariable\IEnvValStoreProvider.cs" />
     <Compile Include="EnvironmentVariable\SystemProvider.cs" />
     <Compile Include="Exceptions\EntityException.cs" />
     <Compile Include="Exceptions\MyException.cs" />

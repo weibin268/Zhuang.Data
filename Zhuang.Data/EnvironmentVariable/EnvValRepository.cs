@@ -5,14 +5,14 @@ using Zhuang.Data.Common;
 
 namespace Zhuang.Data.EnvironmentVariable
 {
-    public class EvnValRepository
+    public class EnvValRepository
     {
         private Dictionary<string, object> _dicEvnVal;
-        private IList<IEvnValStoreProvider> _storeProviders;
-        private static EvnValRepository _instance;
+        private IList<IEnvValStoreProvider> _storeProviders;
+        private static EnvValRepository _instance;
         private static object _objLock = new object();
 
-        public static EvnValRepository Instance
+        public static EnvValRepository Instance
         {
             get
             {
@@ -22,7 +22,7 @@ namespace Zhuang.Data.EnvironmentVariable
                     {
                         if (_instance == null)
                         {
-                            _instance = new EvnValRepository();
+                            _instance = new EnvValRepository();
                             _instance.AddStoreProvider(new SystemProvider());
                         }
                     }
@@ -31,7 +31,7 @@ namespace Zhuang.Data.EnvironmentVariable
             }
         }
 
-        public void AddStoreProvider(IEvnValStoreProvider storeProvider)
+        public void AddStoreProvider(IEnvValStoreProvider storeProvider)
         {
             if (storeProvider == null) return;
 
@@ -48,10 +48,10 @@ namespace Zhuang.Data.EnvironmentVariable
 
         }
 
-        public EvnValRepository()
+        public EnvValRepository()
         {
             _dicEvnVal = new Dictionary<string, object>();
-            _storeProviders = new List<IEvnValStoreProvider>();
+            _storeProviders = new List<IEnvValStoreProvider>();
         }
 
         public object GetEvnVal(string key)

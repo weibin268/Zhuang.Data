@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zhuang.Data.EnvironmentVariable
 {
-    public interface IEvnValStoreProvider
+    public interface IEnvValStoreProvider
     {
         Dictionary<string, object> GetEnvironmentVariables();
     }
