@@ -56,9 +56,9 @@ namespace Zhuang.Data
         public static DbAccessor CreateDbAccessor()
         {
             var result = CreateDbAccessor(DefaultDbName);
-            if (EvnValService.GetDefaultDbAccessorHashCode() == null)
+            if (EnvValService.GetDefaultDbAccessorHashCode() == null)
             {
-                EvnValService.SetDefaultDbAccessorHashCode(result);
+                EnvValService.SetDefaultDbAccessorHashCode(result);
             }
             return result;
         }
@@ -103,18 +103,18 @@ namespace Zhuang.Data
                 || providerName.ToLower() == DbProviderName.SqlServer.ToString().ToLower())
             {
                 dba = new SqlServerAccessor(connectionString);
-                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.SqlServer);
+                EnvValService.SetDbAccessorDbProviderName(dba, DbProviderName.SqlServer);
             }
             else if (providerName.ToLower() == DbProviderName.Oracle.ToString().ToLower())
             {
                 dba = new OracleAccessor(connectionString);
-                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.Oracle);
+                EnvValService.SetDbAccessorDbProviderName(dba, DbProviderName.Oracle);
             }
             else if (providerName.ToLower() == DbProviderName.MySql.ToString().ToLower()
                 || providerName == "MySql.Data.MySqlClient")
             {
                 dba = new MySqlAccessor(connectionString);
-                EvnValService.SetDbAccessorDbProviderName(dba, DbProviderName.MySql);
+                EnvValService.SetDbAccessorDbProviderName(dba, DbProviderName.MySql);
             }
             else
             {

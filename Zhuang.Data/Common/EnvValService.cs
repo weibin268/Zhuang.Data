@@ -5,7 +5,7 @@ using Zhuang.Data.EnvironmentVariable;
 
 namespace Zhuang.Data.Common
 {
-    class EvnValService
+    class EnvValService
     {
         const string DefaultDbAccessorHashCode_Key = "DefaultDbAccessorHashCode";
 
