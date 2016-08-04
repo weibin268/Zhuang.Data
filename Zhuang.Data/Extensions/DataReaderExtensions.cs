@@ -93,6 +93,7 @@ namespace Zhuang.Data.Extensions
 
             if (targetValue == null) goto End;
 
+            //如果数据库字段值为int64而实体属性类型为int32则将字段值转为int32
             if (targetValue.GetType() == typeof(Int64) &&
                 (sourceType == typeof(Int32) || sourceType == typeof(Nullable<Int32>)))
             {
