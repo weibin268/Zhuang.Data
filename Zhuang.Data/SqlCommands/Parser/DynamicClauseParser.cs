@@ -19,15 +19,15 @@ namespace Zhuang.Data.SqlCommands.Parser
         internal const string LEFT_BRACE_QUESTION_MARK = "{?";//视值为“null”、“DBNull”和“空白字符串”的参数为“无效”参数
         internal const string RIGHT_BRACE = "}";
 
-        private Stack removeClauseStack = new Stack();
+        private Stack _removeClauseStack = new Stack();
 
         public void Parse(SqlCommand sqlCommand)
         {
-            if (!DynamicClauseParser.IsCanParse(sqlCommand.Text)) return;
+            if (!IsCanParse(sqlCommand.Text)) return;
 
             RecursiveFindDynamicClause(RegexPattern.DynamicClausePattern.Matches(sqlCommand.Text), sqlCommand);
 
-            foreach (var remove in removeClauseStack)
+            foreach (var remove in _removeClauseStack)
             {
                 sqlCommand.Text = sqlCommand.Text.Replace(remove.ToString(), "");
             }
@@ -35,7 +35,7 @@ namespace Zhuang.Data.SqlCommands.Parser
             sqlCommand.Text = sqlCommand.Text.Replace(LEFT_BRACE_DUBLE_QUESTION_MARK, "").Replace(LEFT_BRACE_QUESTION_MARK, "").Replace(RIGHT_BRACE, "");
         }
 
-        public string RecursiveFindDynamicClause(MatchCollection matchs, SqlCommand sqlCommand)
+        private string RecursiveFindDynamicClause(MatchCollection matchs, SqlCommand sqlCommand)
         {
             string result = string.Empty;
             if (matchs.Count < 1)
@@ -65,13 +65,13 @@ namespace Zhuang.Data.SqlCommands.Parser
                     return r;
                 }))
                 {
-                    removeClauseStack.Push(result);
+                    _removeClauseStack.Push(result);
                 }
             }
             return result;
         }
 
-        public static bool IsCanParse(string strSql)
+        private bool IsCanParse(string strSql)
         {
             return strSql.Contains(LEFT_BRACE_QUESTION_MARK);
         }
