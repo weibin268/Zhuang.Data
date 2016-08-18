@@ -7,7 +7,7 @@ namespace Zhuang.Data.Common
 {
     class EnvValService
     {
-        const string DefaultDbAccessorHashCode_Key = "DefaultDbAccessorHashCode";
+        const string DefaultDbAccessorDbProviderName_Key = "DefaultDbAccessorHashCode";
 
         private static object _objLock = new object();
 
@@ -30,14 +30,14 @@ namespace Zhuang.Data.Common
             {
                 if (GetDefaultDbAccessorDbProviderName() == null)
                 {
-                    EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.DbProviderName.ToString());
+                    EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorDbProviderName_Key, dba.DbProviderName.ToString());
                 }
             }
         }
 
         public static string GetDefaultDbAccessorDbProviderName()
         {
-            var result = EnvValRepository.Instance.GetEvnVal(DefaultDbAccessorHashCode_Key);
+            var result = EnvValRepository.Instance.GetEvnVal(DefaultDbAccessorDbProviderName_Key);
             return result == null ? null : result.ToString();
         }
 
