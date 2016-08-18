@@ -9,7 +9,7 @@ namespace Zhuang.Data.DbProviders.MySql
     {
 
         public MySqlAccessor(string connectionString)
-            : base(MySqlClientFactory.Instance, connectionString)
+            : base(MySqlClientFactory.Instance, connectionString, Common.DbProviderName.MySql)
         {
         }
 

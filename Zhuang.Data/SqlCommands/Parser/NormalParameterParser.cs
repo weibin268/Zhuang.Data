@@ -10,14 +10,11 @@ namespace Zhuang.Data.SqlCommands.Parser
 {
     public class NormalParameterParser : ISqlCommandParser
     {
-
-
         public void Parse(SqlCommand sqlCommand)
         {
             string parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_AT;
 
-            string strDbProviderName = EnvValService.GetDbAccessorDbProviderName(sqlCommand.DbAccessor);
-            if (strDbProviderName == DbProviderName.Oracle.ToString())
+            if (sqlCommand.DbAccessor.DbProviderName == DbProviderName.Oracle)
             {
                 parameterNamePrefix = SqlUtil.PARAMETER_NAME_PREFIX_COLON;
             }

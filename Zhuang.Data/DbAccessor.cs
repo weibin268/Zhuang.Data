@@ -23,6 +23,7 @@ namespace Zhuang.Data
         private DbTransaction _dbTransaction;
         private int _commandTimeout = (int)CommandTimeoutValue.None;
         private string _connectionString = string.Empty;
+        private DbProviderName _dbProviderName;
 
         public event ExecuteEventHandler PreCommandExecute;
         public event ExecuteEventHandler AfterCommandExecute;
@@ -81,11 +82,14 @@ namespace Zhuang.Data
             }
         }
 
-        public DbAccessor(DbProviderFactory dbProviderFactory, string connectionString)
+        public DbProviderName DbProviderName { get; }
+
+        public DbAccessor(DbProviderFactory dbProviderFactory, string connectionString, DbProviderName dbProviderName)
         {
             IsSingleton = false;
             _dbProviderFactory = dbProviderFactory;
             _connectionString = connectionString;
+            _dbProviderName = dbProviderName;
         }
 
         public void ResetCommandTimeout()

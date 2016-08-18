@@ -8,7 +8,7 @@ namespace Zhuang.Data.DbProviders.SqlServer
     public class SqlServerAccessor : DbAccessor
     {
         public SqlServerAccessor(string connectionString)
-            : base(SqlClientFactory.Instance, connectionString)
+            : base(SqlClientFactory.Instance, connectionString, Common.DbProviderName.SqlServer)
         {
 
         }
