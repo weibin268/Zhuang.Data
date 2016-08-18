@@ -76,7 +76,14 @@ namespace Zhuang.Data.EnvironmentVariable
 
         public void AddEvnVal(string key, object value)
         {
-            _dicEvnVal.Add(key, value);
+            if (_dicEvnVal.ContainsKey(key))
+            {
+                _dicEvnVal[key] = value;
+            }
+            else
+            {
+                _dicEvnVal.Add(key, value);
+            }
         }
 
     }
