@@ -22,20 +22,20 @@ namespace Zhuang.Data.Common
         //    return result == null ? null : result.ToString();
         //}
 
-        public static void SetDefaultDbAccessorHashCode(DbAccessor dba)
+        public static void SetDefaultDbAccessorDbProviderName(DbAccessor dba)
         {
-            if (GetDefaultDbAccessorHashCode() != null) return;
+            if (GetDefaultDbAccessorDbProviderName() != null) return;
 
             lock (_objLock)
             {
-                if (GetDefaultDbAccessorHashCode() == null)
+                if (GetDefaultDbAccessorDbProviderName() == null)
                 {
                     EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.DbProviderName.ToString());
                 }
             }
         }
 
-        public static string GetDefaultDbAccessorHashCode()
+        public static string GetDefaultDbAccessorDbProviderName()
         {
             var result = EnvValRepository.Instance.GetEvnVal(DefaultDbAccessorHashCode_Key);
             return result == null ? null : result.ToString();

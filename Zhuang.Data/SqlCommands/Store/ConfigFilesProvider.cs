@@ -202,7 +202,7 @@ namespace Zhuang.Data.SqlCommands.Store
 
                 if (lsDbProviderNames.Exists(c => c.ToLower() == configDbProviderName.ToLower()))
                 {
-                    string strDbProviderName = EnvValService.GetDefaultDbAccessorHashCode();
+                    string strDbProviderName = EnvValService.GetDefaultDbAccessorDbProviderName();
                     if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
                     {
                         result = false;

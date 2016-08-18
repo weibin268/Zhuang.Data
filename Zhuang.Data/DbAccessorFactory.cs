@@ -57,7 +57,7 @@ namespace Zhuang.Data
         {
             var result = CreateDbAccessor(DefaultDbName);
 
-            EnvValService.SetDefaultDbAccessorHashCode(result);
+            EnvValService.SetDefaultDbAccessorDbProviderName(result);
 
             return result;
         }
