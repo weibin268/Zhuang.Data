@@ -82,7 +82,7 @@ namespace Zhuang.Data
             }
         }
 
-        public DbProviderName DbProviderName { get; }
+        public DbProviderName DbProviderName { get { return _dbProviderName; } }
 
         public DbAccessor(DbProviderFactory dbProviderFactory, string connectionString, DbProviderName dbProviderName)
         {

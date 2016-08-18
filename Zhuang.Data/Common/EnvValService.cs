@@ -30,7 +30,7 @@ namespace Zhuang.Data.Common
             {
                 if (GetDefaultDbAccessorHashCode() == null)
                 {
-                    EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.GetHashCode().ToString());
+                    EnvValRepository.Instance.AddEvnVal(DefaultDbAccessorHashCode_Key, dba.DbProviderName.ToString());
                 }
             }
         }

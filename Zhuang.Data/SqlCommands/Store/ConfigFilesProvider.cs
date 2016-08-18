@@ -202,14 +202,10 @@ namespace Zhuang.Data.SqlCommands.Store
 
                 if (lsDbProviderNames.Exists(c => c.ToLower() == configDbProviderName.ToLower()))
                 {
-                    string strDbAccessorHashCode = EnvValService.GetDefaultDbAccessorHashCode();
-                    if (strDbAccessorHashCode != null)
+                    string strDbProviderName = EnvValService.GetDefaultDbAccessorHashCode();
+                    if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
                     {
-                        string strDbProviderName = EnvValRepository.Instance.GetEvnVal(strDbAccessorHashCode).ToString();
-                        if (configDbProviderName.ToLower() != strDbProviderName.ToString().ToLower())
-                        {
-                            result = false;
-                        }
+                        result = false;
                     }
                 }
             }
