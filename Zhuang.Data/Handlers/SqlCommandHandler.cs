@@ -7,6 +7,7 @@ using Zhuang.Data.Handlers;
 using Zhuang.Data.SqlCommands;
 using Zhuang.Data.SqlCommands.Parser;
 using Zhuang.Data.SqlCommands.Store;
+using Zhuang.Data.Utility;
 
 namespace Zhuang.Data.Handlers
 {
@@ -21,15 +22,7 @@ namespace Zhuang.Data.Handlers
 
         private void RetrieveSqlCommand(DbAccessorContext context)
         {
-            if (!context.DbCommand.CommandText.Trim().Contains(" "))
-            {
-                SqlCommand sqlCmd = SqlCommandRepository.Instance.GetSqlCommand(context.DbCommand.CommandText);
-                if (sqlCmd != null)
-                {
-                    context.DbCommand.CommandText = sqlCmd.Text;
-                }
-            }
-
+            context.DbCommand.CommandText = SqlUtil.RetrieveSql(context.DbCommand.CommandText);
         }
       
         private void ParseSqlCommand(DbAccessorContext context)
