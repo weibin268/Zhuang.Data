@@ -104,7 +104,6 @@ namespace Zhuang.Data.Extensions
             return targetValue;
         }
 
-
         private static object ConvertTypeCommonHandle(object targetValue, PropertyInfo sourcePropertyInfo)
         {
             object result;
@@ -124,6 +123,5 @@ namespace Zhuang.Data.Extensions
 
             return result;
         }
-
     }
 }
