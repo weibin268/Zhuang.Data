@@ -26,22 +26,10 @@ namespace Zhuang.Data.Pagination
 
         public string GetCountSql(string strSql)
         {
-            strSql = RetrieveSql(strSql);
-
+            strSql = SqlUtil.RetrieveSql(strSql);
             string tempSql = SqlUtil.RemoveOrderByClause(strSql);
+
             return " select count(1) from (\n" + tempSql + "\n) tt";
-        }
-
-        protected string RetrieveSql(string strSql)
-        {
-            SqlCommand sqlCmd = SqlCommandRepository.Instance.GetSqlCommand(strSql);
-
-            if (sqlCmd != null)
-            {
-                strSql = sqlCmd.Text;
-            }
-
-            return strSql;
-        }
+        } 
     }
 } 

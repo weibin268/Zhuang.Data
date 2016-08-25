@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Common;
 using System.Text;
 using System.Text.RegularExpressions;
+using Zhuang.Data.SqlCommands;
+using Zhuang.Data.SqlCommands.Store;
 
 namespace Zhuang.Data.Utility
 {
@@ -117,6 +119,19 @@ namespace Zhuang.Data.Utility
                 return true;
             else
                 return false;
+        }
+
+        public static string RetrieveSql(string strSql)
+        {
+            if (!strSql.Trim().Contains(" "))
+            {
+                SqlCommand sqlCmd = SqlCommandRepository.Instance.GetSqlCommand(strSql);
+                if (sqlCmd != null)
+                {
+                    strSql = sqlCmd.Text;
+                }
+            }
+            return strSql;
         }
     }
 }

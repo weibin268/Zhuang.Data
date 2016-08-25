@@ -10,9 +10,9 @@ namespace Zhuang.Data.DbProviders.MySql
     {
         public override string GetPageSql(string sql, string orderClause, int startRowIndex, int rowCount)
         {
-            sql = RetrieveSql(sql);
-
+            sql = SqlUtil.RetrieveSql(sql);
             sql = SqlUtil.RemoveOrderByClause(sql);
+
             StringBuilder stringBuilder = new StringBuilder(sql.Length + 100);
             if (!string.IsNullOrEmpty(orderClause))
             {
