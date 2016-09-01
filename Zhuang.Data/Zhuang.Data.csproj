@@ -94,7 +94,7 @@
     <Compile Include="Pagination\DbPaging.cs" />
     <Compile Include="DbProviders\Oracle\OraclePaging.cs" />
     <Compile Include="SqlCommands\Parser\DynamicClauseParser.cs" />
-    <Compile Include="SqlCommands\Parser\EvnValParameterParser.cs" />
+    <Compile Include="SqlCommands\Parser\EnvValParameterParser.cs" />
     <Compile Include="SqlCommands\Parser\ISqlCommandParser.cs" />
     <Compile Include="SqlCommands\Parser\NormalParameterParser.cs" />
     <Compile Include="SqlCommands\Parser\ValueParameterParser.cs" />

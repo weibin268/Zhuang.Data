@@ -7,7 +7,7 @@ using Zhuang.Data.EnvironmentVariable;
 
 namespace Zhuang.Data.SqlCommands.Parser
 {
-    public class EvnValParameterParser : ISqlCommandParser
+    public class EnvValParameterParser : ISqlCommandParser
     {
         public void Parse(SqlCommand sqlCommand)
         {
