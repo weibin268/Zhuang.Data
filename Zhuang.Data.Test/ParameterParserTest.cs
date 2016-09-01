@@ -19,8 +19,10 @@ namespace Zhuang.Data.Test
             Console.WriteLine(date);
             Assert.AreEqual<string>(DateTime.Now.ToString("yyyy-MM-dd"), date);
 
-            var datetime = _dba.ExecuteScalar<string>("select '{{datetime:yyyy-MM}}'");
+            var datetime = _dba.ExecuteScalar<string>("select '{{datetime:yyyyMMddHHmmss}}'");
             Console.WriteLine(datetime);
+            Assert.AreEqual<string>(DateTime.Now.ToString("yyyyMMddHHmmss"), datetime);
+
         }
 
         [TestMethod]
