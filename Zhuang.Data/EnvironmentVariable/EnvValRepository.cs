@@ -54,6 +54,11 @@ namespace Zhuang.Data.EnvironmentVariable
             _storeProviders = new List<IEnvValStoreProvider>();
         }
 
+        /// <summary>
+        /// 获取环境变量
+        /// </summary>
+        /// <param name="key">格式如：datetime:yyyy-MM-dd</param>
+        /// <returns></returns>
         public object GetEvnVal(string key)
         {
 

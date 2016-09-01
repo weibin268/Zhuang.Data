@@ -16,7 +16,17 @@ namespace Zhuang.Data.EnvironmentVariable
 
             dicResult.Add("time", new MyEnvFunc((c) => { return DateTime.Now.ToString("HH:mm:ss"); }));
 
-            dicResult.Add("datetime", new MyEnvFunc((c) => { return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); }));
+            dicResult.Add("datetime", new MyEnvFunc((c) =>
+            {
+                string format = "yyyy-MM-dd HH:mm:ss";
+
+                if (!string.IsNullOrEmpty(c))
+                {
+                    format = c;
+                }
+
+                return DateTime.Now.ToString(format);
+            }));
 
             return dicResult;
         }
