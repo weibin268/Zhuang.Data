@@ -5,6 +5,6 @@ using System.Text;
 namespace Zhuang.Data.Common
 {
 
-    public delegate string MyEnvFunc();
+    public delegate string MyEnvFunc(string args);
 
 }
