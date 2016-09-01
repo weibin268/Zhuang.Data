@@ -16,16 +16,16 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
             {
-                string evnParam = match.Groups["EvnParam"].Value.Trim();
-                if (string.IsNullOrEmpty(evnParam)) continue;
+                string envParam = match.Groups["EnvParam"].Value.Trim();
+                if (string.IsNullOrEmpty(envParam)) continue;
 
-                var evnVal = EnvValRepository.Instance.GetEvnVal(evnParam);
-                if (!string.IsNullOrEmpty(evnVal == null ? null : evnVal.ToString()))
+                var envVal = EnvValRepository.Instance.GetEvnVal(envParam);
+                if (!string.IsNullOrEmpty(envVal == null ? null : envVal.ToString()))
                 {
                     lsReplacement.Add(new Replacement()
                     {
                         OldText = match.Value,
-                        NewText = evnVal.ToString()
+                        NewText = envVal.ToString()
                     });
                     continue;
                 }
