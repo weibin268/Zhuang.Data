@@ -10,6 +10,10 @@ namespace Zhuang.Data.EnvironmentVariable
 
         public const string SPLITTER = ":";
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text">格式如：datetime:yyyy-MM-dd</param>
         public EnvValText(string text)
         {
             _text = text;
