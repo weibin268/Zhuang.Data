@@ -38,7 +38,8 @@ namespace Zhuang.Data.Handlers
             IList<ISqlCommandParser> parsers = new List<ISqlCommandParser>();
             parsers.Add(new NormalParameterParser());
             parsers.Add(new ValueParameterParser());
-            parsers.Add(new EnvValParameterParser());
+            parsers.Add(new EnvValParameterParser(true));
+            parsers.Add(new EnvValParameterParser(false));
             parsers.Add(new DynamicClauseParser());
 
             foreach (var p in parsers)

@@ -9,6 +9,14 @@ namespace Zhuang.Data.SqlCommands.Parser
 {
     public class EnvValParameterParser : ISqlCommandParser
     {
+
+        private bool _hasArgs;
+
+        public EnvValParameterParser(bool hasArgs)
+        {
+            _hasArgs = hasArgs;
+        }
+
         public void Parse(SqlCommand sqlCommand)
         {
 
@@ -17,7 +25,17 @@ namespace Zhuang.Data.SqlCommands.Parser
             foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
             {
                 string envParam = match.Groups["EnvParam"].Value.Trim();
+
                 if (string.IsNullOrEmpty(envParam)) continue;
+
+                if (_hasArgs)
+                {
+                    if (!envParam.Contains(":")) continue;
+                }
+                else
+                {
+                    if (envParam.Contains(":")) continue;
+                }
 
                 var envVal = EnvValRepository.Instance.GetEvnVal(envParam);
                 if (!string.IsNullOrEmpty(envVal == null ? null : envVal.ToString()))
