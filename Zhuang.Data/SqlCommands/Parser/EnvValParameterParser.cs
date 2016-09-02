@@ -28,16 +28,18 @@ namespace Zhuang.Data.SqlCommands.Parser
 
                 if (string.IsNullOrEmpty(envParam)) continue;
 
+                EnvValText envValText = new EnvValText(envParam);
                 if (_hasArgs)
                 {
-                    if (!envParam.Contains(":")) continue;
+                    if (!envValText.HasArgs()) continue;
                 }
                 else
                 {
-                    if (envParam.Contains(":")) continue;
+                    if (envValText.HasArgs()) continue;
                 }
 
-                var envVal = EnvValRepository.Instance.GetEvnVal(envParam);
+                var envVal = EnvValRepository.Instance.GetEvnVal(envValText);
+
                 if (!string.IsNullOrEmpty(envVal == null ? null : envVal.ToString()))
                 {
                     lsReplacement.Add(new Replacement()

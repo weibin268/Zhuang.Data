@@ -61,10 +61,16 @@ namespace Zhuang.Data.EnvironmentVariable
         /// <returns></returns>
         public object GetEvnVal(string key)
         {
+            var envValText = new EnvValText(key);
 
-            var arrayKey = key.Split(':');
-            var keyValue = arrayKey[0];
-            string keyParams = arrayKey.Length > 1 ? arrayKey[1] : null;
+            return GetEvnVal(envValText);
+        }
+
+        public object GetEvnVal(EnvValText envValText)
+        {
+
+            var keyValue = envValText.GetName();
+            string keyParams = envValText.GetArgs();
 
             if (_dicEvnVal.ContainsKey(keyValue))
             {
