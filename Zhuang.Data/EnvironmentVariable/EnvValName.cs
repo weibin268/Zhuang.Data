@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Zhuang.Data.EnvironmentVariable
 {
-    public class EnvValText
+    public class EnvValName
     {
         private string _text;
 
@@ -14,7 +14,7 @@ namespace Zhuang.Data.EnvironmentVariable
         /// 
         /// </summary>
         /// <param name="text">格式如：datetime:yyyy-MM-dd</param>
-        public EnvValText(string text)
+        public EnvValName(string text)
         {
             _text = text;
         }

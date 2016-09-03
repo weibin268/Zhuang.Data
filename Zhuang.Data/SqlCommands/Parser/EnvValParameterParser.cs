@@ -28,7 +28,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
                 if (string.IsNullOrEmpty(envParam)) continue;
 
-                EnvValText envValText = new EnvValText(envParam);
+                EnvValName envValText = new EnvValName(envParam);
                 if (_hasArgs)
                 {
                     if (!envValText.HasArgs()) continue;

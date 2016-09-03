@@ -80,7 +80,7 @@
     <Compile Include="Entity\Sql\ISqlBuilder.cs" />
     <Compile Include="EnvironmentVariable\EnvValRepository.cs" />
     <Compile Include="Common\EnvValService.cs" />
-    <Compile Include="EnvironmentVariable\EnvValText.cs" />
+    <Compile Include="EnvironmentVariable\EnvValName.cs" />
     <Compile Include="EnvironmentVariable\IEnvValStoreProvider.cs" />
     <Compile Include="EnvironmentVariable\DefaultEnvValStoreProvider.cs" />
     <Compile Include="Exceptions\EntityException.cs" />

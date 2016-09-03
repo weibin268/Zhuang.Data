@@ -61,12 +61,12 @@ namespace Zhuang.Data.EnvironmentVariable
         /// <returns></returns>
         public object GetEvnVal(string key)
         {
-            var envValText = new EnvValText(key);
+            var envValText = new EnvValName(key);
 
             return GetEvnVal(envValText);
         }
 
-        public object GetEvnVal(EnvValText envValText)
+        public object GetEvnVal(EnvValName envValText)
         {
 
             var keyValue = envValText.GetName();
