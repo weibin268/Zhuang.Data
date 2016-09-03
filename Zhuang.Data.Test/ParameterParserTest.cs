@@ -23,6 +23,10 @@ namespace Zhuang.Data.Test
             Console.WriteLine(datetime);
             Assert.AreEqual<string>(DateTime.Now.ToString("yyyyMMddHHmmss"), datetime);
 
+            var guid= _dba.ExecuteScalar<string>("select '{{guid}}'");
+            Console.WriteLine(guid);
+            Assert.AreEqual<int>(Guid.NewGuid().ToString().Length, guid.Length);
+
         }
 
         [TestMethod]
