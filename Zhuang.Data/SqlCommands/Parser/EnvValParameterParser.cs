@@ -24,7 +24,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
             {
-                string envParam = match.Groups["EnvParam"].Value.Trim();
+                string envParam = match.Groups["EnvValParam"].Value.Trim();
 
                 if (string.IsNullOrEmpty(envParam)) continue;
 
