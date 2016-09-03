@@ -28,6 +28,8 @@ namespace Zhuang.Data.EnvironmentVariable
                 return DateTime.Now.ToString(format);
             }));
 
+            dicResult.Add("guid", new MyEnvFunc(c => { return Guid.NewGuid().ToString(); }));
+
             return dicResult;
         }
     }
