@@ -21,7 +21,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             IList<Replacement> lsReplacement = new List<Replacement>();
 
-            foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
+            foreach (Match match in RegexPattern.CustomParameterPattern.Matches(sqlCommand.Text))
             {
                 string namedParam = match.Groups["NormalParam"].Value.Trim();
                 if (string.IsNullOrEmpty(namedParam)) continue;

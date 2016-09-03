@@ -22,7 +22,7 @@ namespace Zhuang.Data.SqlCommands.Parser
 
             IList<Replacement> lsReplacement = new List<Replacement>();
 
-            foreach (Match match in RegexPattern.ParameterPattern.Matches(sqlCommand.Text))
+            foreach (Match match in RegexPattern.CustomParameterPattern.Matches(sqlCommand.Text))
             {
                 string envParam = match.Groups["EnvValParam"].Value.Trim();
 
