@@ -82,7 +82,7 @@
     <Compile Include="Common\EnvValService.cs" />
     <Compile Include="EnvironmentVariable\EnvValText.cs" />
     <Compile Include="EnvironmentVariable\IEnvValStoreProvider.cs" />
-    <Compile Include="EnvironmentVariable\SystemProvider.cs" />
+    <Compile Include="EnvironmentVariable\DefaultEnvValStoreProvider.cs" />
     <Compile Include="Exceptions\EntityException.cs" />
     <Compile Include="Exceptions\MyException.cs" />
     <Compile Include="Handlers\DbParameterHandler.cs" />

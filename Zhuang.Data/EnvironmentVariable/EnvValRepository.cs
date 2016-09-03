@@ -23,7 +23,7 @@ namespace Zhuang.Data.EnvironmentVariable
                         if (_instance == null)
                         {
                             _instance = new EnvValRepository();
-                            _instance.AddStoreProvider(new SystemProvider());
+                            _instance.AddStoreProvider(new DefaultEnvValStoreProvider());
                         }
                     }
                 }
