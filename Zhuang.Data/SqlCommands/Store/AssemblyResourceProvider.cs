@@ -43,7 +43,7 @@ namespace Zhuang.Data.SqlCommands.Store
             return result;
         }
 
-        public bool IsRecourceAssembly(Assembly assembly)
+        public static bool IsRecourceAssembly(Assembly assembly)
         {
             bool result = false;
 
